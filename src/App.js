@@ -1,10 +1,15 @@
 import React,{Fragment} from "react";
 import "./App.css";
-import {BrowserRouter as Router,Route} from "react-router-dom";
+
 import PrimarySearchAppBar from "./components/Appbar.js";
 import Page from "./components/Page.js";
 import MediaCard from "./components/Home"
 import CreateSurvey from "./components/CreateSurvey";
+
+import Sidebar from './componentss/dashboard/Sidebar.js';
+import MainPanel from './componentss/dashboard/MainPanel.js';
+
+import {Switch, Route,Link,BrowserRouter as Router} from 'react-router-dom';
 
 class App extends React.Component {
 
@@ -31,6 +36,8 @@ class App extends React.Component {
          <Route exact path="/home" component={MediaCard} />
          <Route exact path ="/createSurvey" component={CreateSurvey}/>
          <Route exact path="/" component={Page} /> 
+         <Sidebar/>
+         <MainPanel/>
        </Router>
        </Fragment>
      

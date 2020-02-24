@@ -1,15 +1,14 @@
 import React,{Fragment} from "react";
 import "./App.css";
-
+import {BrowserRouter as Router,Route} from "react-router-dom";
 import PrimarySearchAppBar from "./components/Appbar.js";
 import Page from "./components/Page.js";
 import MediaCard from "./components/Home"
 import CreateSurvey from "./components/CreateSurvey";
-
-import Sidebar from './componentss/dashboard/Sidebar.js';
-import MainPanel from './componentss/dashboard/MainPanel.js';
-
-import {Switch, Route,Link,BrowserRouter as Router} from 'react-router-dom';
+import Dashboard from './componentss/dashboard/Dashboard.js';
+import User from './componentss/dashboard/User.js';
+import {Nav} from 'react-bootstrap';
+import SurveyTable from './componentss/dashboard/SurveyTable.js';
 
 class App extends React.Component {
 
@@ -20,8 +19,33 @@ class App extends React.Component {
   var navBar;
    if(localStorage.getItem('userId')){ 
      navBar =(
-      <PrimarySearchAppBar/>
-      )
+      <div className="sidebar" data-color="purple" data-background-color="white" data-image="assets/img/bg2.jpg">
+      <div className="logo"><Nav.Link href="/dashboard" className="simple-text logo-normal">
+          Survey Glance
+        </Nav.Link></div>
+      <div className="sidebar-wrapper">
+        <ul className="nav">
+          <li className="nav-item active  ">
+            <Nav.Link  href="/dashboard">
+              <i className="material-icons">dashboard</i>
+              <p>Dashboard</p>
+            </Nav.Link>
+          </li>
+          <li className="nav-item ">
+            <Nav.Link className="nav-link" href="/user">
+              <i className="material-icons">person</i>
+              <p>User</p>
+            </Nav.Link>
+          </li>
+          <li className="nav-item ">
+            <Nav.Link className="nav-link" href="/home">
+              <i className="material-icons">content_paste</i>
+              <p>Forms</p>
+            </Nav.Link>
+          </li>
+        </ul>
+      </div>
+    </div>      )
     }
     else{
       navBar=(
@@ -36,8 +60,12 @@ class App extends React.Component {
          <Route exact path="/home" component={MediaCard} />
          <Route exact path ="/createSurvey" component={CreateSurvey}/>
          <Route exact path="/" component={Page} /> 
-         <Sidebar/>
-         <MainPanel/>
+         <div className="main-panel">
+         <Route exact path="/" component={Dashboard}/>
+         <Route  path="/dashboard" component={Dashboard}/>
+         <Route exact path="/user" component={User}/>
+         <Route exact path="/surveytable" component={SurveyTable}/>
+        </div>
        </Router>
        </Fragment>
      

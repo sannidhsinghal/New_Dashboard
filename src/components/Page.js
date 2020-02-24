@@ -5,10 +5,10 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-// import * as myimport from "./main.js";
 import PrimarySearchAppBar from "./Appbar.js"; 
 import { dataPost } from "./GetData";
 import { Redirect} from "react-router-dom"
+import "../Styles.css";
 
 
 class Page extends React.Component {
@@ -121,10 +121,12 @@ class Page extends React.Component {
          }
     return (
       <Fragment>
-      <div className="one">
+      <div className="one" style={{overflow:"hidden"}}>
+        {/* <p>Survey</p> */}
       
-        <h1 className="head" style={{fontSize:45}}>Welcome To SurveyGlance ! </h1>
-        <div className="container" id="container">
+        <h1 className="head">Welcome To SurveyGlance ! </h1>
+        <div className="container" id="container" > 
+     
           <div className="form-container sign-up-container">
             <form onSubmit={this.handleSubmit} action="#">
               <h1>Create Account !</h1>
@@ -133,6 +135,7 @@ class Page extends React.Component {
               <input type="text" name="username" placeholder="Username" onChange={this.handleChange}/>
               <input type="number" name="contactNo" placeholder="Contact No." onChange={this.handleChange}/>
               <input type="password" name="password" placeholder="Password" onChange={this.handleChange} />
+
               <FormControl component="fieldset">
                 <FormLabel component="legend">Gender: </FormLabel>
                 <RadioGroup

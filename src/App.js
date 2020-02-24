@@ -59,10 +59,15 @@ class App extends React.Component {
          
          <div className="main-panel">
          <Route exact path="/login" component={Page}/>
+         <div className="main-panel">
          <Route exact path="/home" component={MediaCard} />
          <Route exact path ="/createSurvey" component={CreateSurvey}/>
          <Route exact path="/" component={Page} /> 
+
          {/* <Route exact path="/" component={Dashboard}/> */}
+
+        
+
          <Route  path="/dashboard" component={Dashboard}/>
          <Route exact path="/user" component={User}/>
          <Route exact path="/surveytable" component={SurveyTable}/>

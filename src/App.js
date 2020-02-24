@@ -3,7 +3,7 @@ import "./App.css";
 import {BrowserRouter as Router,Route} from "react-router-dom";
 import PrimarySearchAppBar from "./components/Appbar.js";
 import Page from "./components/Page.js";
-import MediaCard from "./components/Home"
+import Home from "./components/Home"
 import CreateSurvey from "./components/CreateSurvey";
 
 class App extends React.Component {
@@ -28,7 +28,7 @@ class App extends React.Component {
        {navBar}
        <Router>
          <Route exact path="/login" component={Page}/>
-         <Route exact path="/home" component={MediaCard} />
+         <Route exact path="/home" component={Home} />
          <Route exact path ="/createSurvey" component={CreateSurvey}/>
          <Route exact path="/" component={Page} />    
        </Router>

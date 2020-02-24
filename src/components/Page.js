@@ -6,11 +6,96 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 // import * as myimport from "./main.js";
-import PrimarySearchAppBar from "./Appbar.js";
+import PrimarySearchAppBar from "./Appbar.js"; 
+import { dataPost } from "./GetData";
+import { Redirect} from "react-router-dom"
 
 
 class Page extends React.Component {
+  constructor(){
+    super()
+    this.state ={
+      "username": "",
+      "fullname": "",
+      "emailId": "",
+      "contactNo": "",
+      "password": "",
+      "gender": "",
+      "isLogged": false,
+      "error": "",
+      "userId": ""
+    }
+  }
+
+  handleChange=(event)=>{
+    this.setState({
+      [event.target.name] : event.target.value,
+     
+
+      
+    })
+  }
+ 
+
+  handleGender=(event)=>{
+    this.setState({
+      gender:event.target.value
+    })
+  }
+
+  handleSubmit =(event)=>{
+    event.preventDefault();
+    const user = {
+      fullName: this.state.fullname,
+      userName: this.state.username,
+      emailId: this.state.emailId,
+      phoneNumber: this.state.contactNo,
+      password: this.state.password,
+      gender: this.state.gender
+    };
+    console.log(user)
+    dataPost(`/user/createUser`,user)
+    .then(res=>{
+      console.log(res);
+    });
+  }
+    
+  handleApi=event=>{
+    event.preventDefault();
+    const userDetail = {
+      username: this.state.username,
+      password: this.state.password
+      
+    };
+    console.log(userDetail)
+    dataPost('/user/login',userDetail)
+    .then(response=>{
+      if(response.hasOwnProperty('userName')){
+        console.log("dhdf")
+        this.setState({
+          isLogged: true,
+        })
+        console.log("logged")
+        localStorage.setItem('userId', response.id)
+      }
+    })
+    .catch(error=>{
+      this.setState({
+        error:error.response.data.message
+      })
+    })
+  }
+
   render() {
+    let alertBox=""
+    // console.log('jf')
+    if(this.state.isLogged){
+      return(
+        <Redirect to ={{pathname:'/home',state:{
+          userId:this.state.userId
+        }}}></Redirect>
+      )
+    }
   // const [value, setValue] = React.useState("female");
   // const handleChange = event => {
   //   setValue(event.target.value);
@@ -41,13 +126,13 @@ class Page extends React.Component {
         <h1 className="head" style={{fontSize:45}}>Welcome To SurveyGlance ! </h1>
         <div className="container" id="container">
           <div className="form-container sign-up-container">
-            <form action="#">
+            <form onSubmit={this.handleSubmit} action="#">
               <h1>Create Account !</h1>
-              <input type="text" placeholder="Name" />
-              <input type="email" placeholder="Email" />
-              <input type="text" placeholder="Username" />
-              <input type="number" placeholder="Contact No." />
-              <input type="password" placeholder="Password" />
+              <input type="text" name="fullname" placeholder="Name" onChange={this.handleChange}/>
+              <input type="email" name="emailId" placeholder="Email" onChange={this.handleChange}/>
+              <input type="text" name="username" placeholder="Username" onChange={this.handleChange}/>
+              <input type="number" name="contactNo" placeholder="Contact No." onChange={this.handleChange}/>
+              <input type="password" name="password" placeholder="Password" onChange={this.handleChange} />
               <FormControl component="fieldset">
                 <FormLabel component="legend">Gender: </FormLabel>
                 <RadioGroup
@@ -55,16 +140,20 @@ class Page extends React.Component {
                   name="position"
                 >
                   <FormControlLabel
-                    value="Male"
+                    name="gender"
+                    value="MALE"
                     control={<Radio color="primary" />}
                     label="Male"
                     labelPlacement="start"
+                    onChange={this.handleGender}
                   />
                   <FormControlLabel
-                    value="Female"
+                    name="gender"
+                    value="FEMALE"
                     control={<Radio color="primary" />}
                     label="Female"
                     labelPlacement="start"
+                    onChange={this.handleGender}
                   />
                 </RadioGroup>
               </FormControl>
@@ -73,11 +162,11 @@ class Page extends React.Component {
             </form>
           </div>
           <div className="form-container sign-in-container">
-            <form action="#">
+            <form onSubmit={this.handleApi} action="#">
               <h1>Sign in !</h1>
 
-              <input type="email" placeholder="Email" />
-              <input type="password" placeholder="Password" />
+              <input type="username" placeholder="username" name="username" onChange={this.handleChange}/>
+              <input type="password" placeholder="Password" name="password" onChange={this.handleChange} />
               <a href="#">Forgot your password?</a>
               <button onClick={()=>localStorage.setItem('userId',1)}>Sign In</button>
             </form>

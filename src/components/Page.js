@@ -5,8 +5,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-// import * as myimport from "./main.js";
-import PrimarySearchAppBar from "./Appbar.js";
+import "../Styles.css";
 
 
 class Page extends React.Component {
@@ -36,13 +35,15 @@ class Page extends React.Component {
          }
     return (
       <Fragment>
-      <div className="one">
+      <div className="one" style={{overflow:"hidden"}}>
+        {/* <p>Survey</p> */}
       
-        <h1 className="head" style={{fontSize:45}}>Welcome To SurveyGlance ! </h1>
-        <div className="container" id="container">
+        <h1 className="head">Welcome To SurveyGlance ! </h1>
+        <div className="container" id="container" > 
+     
           <div className="form-container sign-up-container">
             <form action="#">
-              <h1>Create Account !</h1>
+              <h2>Create Account !</h2>
               <input type="text" placeholder="Name" />
               <input type="email" placeholder="Email" />
               <input type="text" placeholder="Username" />

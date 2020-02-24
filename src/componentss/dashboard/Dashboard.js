@@ -1,4 +1,5 @@
 import React from 'react';
+import Bar from './Chart.js';
 
 
 function  Dashboard() {
@@ -10,7 +11,9 @@ function  Dashboard() {
               <div className="card card-stats">
                 <div className="card-header card-header-warning card-header-icon">
                   <div className="card-icon">
-                    <i className="material-icons">content_copy</i>
+                  <i class="material-icons">
+                            check_circle
+                  </i>
                   </div>
                   <p className="card-category">Used Space</p>
                   <h3 className="card-title">49/50
@@ -75,10 +78,11 @@ function  Dashboard() {
             </div>
           </div>
           <div className="row">
-            <div className="col-md-4">
+            <div className="col-md-6">
               <div className="card card-chart">
                 <div className="card-header card-header-success">
-                  <div className="ct-chart" id="dailySalesChart" />
+                  <div className="ct-chart"  />
+                  <Bar/>
                 </div>
                 <div className="card-body">
                   <h4 className="card-title">Daily Sales</h4>
@@ -92,7 +96,7 @@ function  Dashboard() {
                 </div>
               </div>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-6">
               <div className="card card-chart">
                 <div className="card-header card-header-warning">
                   <div className="ct-chart" id="websiteViewsChart" />
@@ -108,7 +112,7 @@ function  Dashboard() {
                 </div>
               </div>
             </div>
-            <div className="col-md-4">
+             <div className="col-md-6">
               <div className="card card-chart">
                 <div className="card-header card-header-danger">
                   <div className="ct-chart" id="completedTasksChart" />
@@ -124,7 +128,7 @@ function  Dashboard() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> 
           <div className="row">
             <div className="col-lg-6 col-md-12">
               <div className="card">

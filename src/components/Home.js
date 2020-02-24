@@ -1,31 +1,44 @@
-import React from "react";
+import React,{Component} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
+import Figure from "react-bootstrap/Figure";
 import Typography from "@material-ui/core/Typography";
 import IconLabelButtons from "./createButton.js";
 import Button from "@material-ui/core/Button";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { Link } from "@material-ui/core";
 import { Redirect } from "react-router-dom";
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 345
-  },
-  media: {
-    height: 140
+import {dataGet} from "./GetData"
+
+ class Home extends Component{
+  constructor() {
+    super();
+    this.state = {
+      surveys: [],
+    };
   }
-});
 
-export default function MediaCard() {
-  const classes = useStyles();
-
+    componentDidMount(){
+    dataGet("/survey/surveys/"+localStorage.getItem("userId"))
+    .then(response => {
+      this.setState({
+        surveys: response
+      });
+      console.log(this.state.surveys)
+    })
+    .catch(function(error){
+      console.log(error);
+    });
+  }
+ 
+  render(){
   return (
     <div>
     <div style={{marginTop:"10px",marginLeft:"37.5%"}}>
-    <Card className={classes.root} style={{backgroundColor:"#e8eaf6"}}>
+    <Card  style={{backgroundColor:"#e8eaf6", maxWidth: "345"}}>
       <CardActionArea>
         <CardContent>
           <Typography
@@ -51,15 +64,19 @@ export default function MediaCard() {
         variant="contained"
         color="primary"
         size="large"
-        className={classes.button}
+        // className={classes.button}
         startIcon={<AddCircleIcon />}
         onClick={ event =>  window.location.href='/createSurvey'}
          >
        CREATE
-      </Button>     </div>
+      </Button>    
+       </div>
       <CardActions />
     </Card>
     </div>
+
+    {this.state.surveys.map(res=>{
+          return(
     <div
       style={{
         display: "flex",
@@ -68,72 +85,27 @@ export default function MediaCard() {
         paddingLeft:"70px",
         paddingRight:"70px",
         paddingTop:"45px",
-
-
       }}
     >
-      <Card className={classes.root} style={{minWidth:"31%",backgroundColor:"#e0f2f1"}} >
-        <CardActionArea>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-             Survey 1
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-             survey content
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-        </CardActions>
-      </Card>
+    
+        <Card key={res.id} style={{minWidth:"31%",backgroundColor:"#e0f2f1", maxWidth: "345"}} >
+          <Figure>
+            <Figure.Image
+            src={res.imagePath}
+            fluid>
+              </Figure.Image>
+              </Figure>
+              <Typography gutterBottom variant="h5" component="h2">
 
-      {/* <Card className={classes.root} style={{minWidth:"31%",backgroundColor:"#e0f7fa"}}>
-        <CardActionArea>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              Survey 2
+           {res.name}
+            {res.description}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-             survey content
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-        </CardActions>
-      </Card> */}
-      {/* <Card className={classes.root} style={{minWidth:"31%",backgroundColor:"#eeeeee"}}>
-        <CardActionArea>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              Survey 3
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              survey content
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-        </CardActions>
-      </Card> */}
-    </div>
-    </div>
+      </Card>
+      </div>
+          )})}
+
+      </div>
+    
   );
-}
+}}
+export default Home

@@ -3,7 +3,7 @@ import "./App.css";
 import {BrowserRouter as Router,Route} from "react-router-dom";
 import PrimarySearchAppBar from "./components/Appbar.js";
 import Page from "./components/Page.js";
-import MediaCard from "./components/Home"
+import Home from "./components/Home"
 import CreateSurvey from "./components/CreateSurvey";
 import Dashboard from './componentss/dashboard/Dashboard.js';
 import User from './componentss/dashboard/User.js';
@@ -57,15 +57,13 @@ class App extends React.Component {
        {navBar}
        <Router>
         
-         <div className="main-panel">
-         <Route exact path="/home" component={MediaCard} />
-         <Route exact path ="/createSurvey" component={CreateSurvey}/>
-         <Route exact path="/" component={Page} /> 
-
-         {/* <Route exact path="/" component={Dashboard}/> */}
 
         
-
+         <div className="main-panel">
+         <Route exact path="/login" component={Page}/>
+         <Route exact path="/home" component={Home} />
+         <Route exact path ="/createSurvey" component={CreateSurvey}/>
+         <Route exact path="/" component={Page} />
          <Route  path="/dashboard" component={Dashboard}/>
          <Route exact path="/user" component={User}/>
         

@@ -57,10 +57,10 @@ class App extends React.Component {
        {navBar}
        <Router>
          <Route exact path="/login" component={Page}/>
+         <div className="main-panel">
          <Route exact path="/home" component={MediaCard} />
          <Route exact path ="/createSurvey" component={CreateSurvey}/>
          <Route exact path="/" component={Page} /> 
-         <div className="main-panel">
          <Route exact path="/" component={Dashboard}/>
          <Route  path="/dashboard" component={Dashboard}/>
          <Route exact path="/user" component={User}/>

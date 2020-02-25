@@ -1,11 +1,9 @@
 import React,{Fragment} from "react";
-// import "./App.css";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-import PrimarySearchAppBar from "./Appbar.js"; 
 import { dataPost } from "./GetData";
 import { Redirect} from "react-router-dom"
 import "../Styles.css";
@@ -15,24 +13,21 @@ class Page extends React.Component {
   constructor(){
     super()
     this.state ={
-      "username": "",
-      "fullname": "",
-      "emailId": "",
-      "contactNo": "",
-      "password": "",
-      "gender": "",
-      "isLogged": false,
-      "error": "",
-      "userId": ""
+      username: "",
+      fullname: "",
+      emailId: "",
+      contactNo: "",
+      password: "",
+      gender: "",
+      isLogged: false,
+      error: "",
+      userId: ""
     }
   }
 
   handleChange=(event)=>{
     this.setState({
-      [event.target.name] : event.target.value,
-     
-
-      
+      [event.target.name] : event.target.value,    
     })
   }
  
@@ -171,7 +166,7 @@ class Page extends React.Component {
               <input type="username" placeholder="username" name="username" onChange={this.handleChange}/>
               <input type="password" placeholder="Password" name="password" onChange={this.handleChange} />
               <a href="#">Forgot your password?</a>
-              <button onClick={()=>localStorage.setItem('userId',1)}>Sign In</button>
+              <button onClick={this.handleApi}>Sign In</button>
             </form>
           </div>
           <div className="overlay-container">

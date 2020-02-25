@@ -124,7 +124,7 @@ class Page extends React.Component {
      
           <div className="form-container sign-up-container">
             <form onSubmit={this.handleSubmit} action="#">
-              <h1>Create Account !</h1>
+              <h2>Create Account !</h2>
               <input type="text" name="fullname" placeholder="Name" onChange={this.handleChange}/>
               <input type="email" name="emailId" placeholder="Email" onChange={this.handleChange}/>
               <input type="text" name="username" placeholder="Username" onChange={this.handleChange}/>

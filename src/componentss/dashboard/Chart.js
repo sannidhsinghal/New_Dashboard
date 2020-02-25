@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ChartistGraph from 'react-chartist';
  
-export default class Bar extends React.Component {
+export default class Line extends React.Component {
   render() {
  
     var data = {

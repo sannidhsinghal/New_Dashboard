@@ -1,5 +1,6 @@
 import React from 'react';
 import Bar from './Chart.js';
+import Line from './Chart1.js';
 
 
 function  Dashboard() {
@@ -95,7 +96,8 @@ function  Dashboard() {
             <div className="col-md-6">
               <div className="card card-chart">
                 <div className="card-header card-header-warning">
-                  <div className="ct-chart" id="websiteViewsChart" />
+                  <div className="ct-chart"  />
+                  <Line/>
                 </div>
                 <div className="card-body">
                   <h4 className="card-title">Email Subscriptions</h4>
@@ -108,7 +110,7 @@ function  Dashboard() {
                 </div>
               </div>
             </div>
-             <div className="col-md-6">
+             {/* <div className="col-md-6">
               <div className="card card-chart">
                 <div className="card-header card-header-danger">
                   <div className="ct-chart" id="completedTasksChart" />
@@ -123,7 +125,7 @@ function  Dashboard() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
           </div>
         </div>

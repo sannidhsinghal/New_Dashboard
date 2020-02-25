@@ -124,7 +124,7 @@ class CreateSurvey extends Component{
         switch (params) {
           case 0:
             return (
-              <div>
+              <div className="container" style={{position:"relative"}}>
                 <label>Name: </label>
                 <TextField
                   variant="outlined"

@@ -37,8 +37,8 @@ import {dataGet} from "./GetData"
   render(){
   return (
     <div>
-    <div style={{marginTop:"10px",marginLeft:"37.5%"}}>
-    <Card  style={{backgroundColor:"#e8eaf6", maxWidth: "345"}}>
+    <div className="col-md-9" style={{marginTop:"10px",marginLeft:"15%"}}>
+    <Card  style={{backgroundColor:"#e8eaf6", maxWidth: "38"}}>
       <CardActionArea>
         <CardContent>
           <Typography
@@ -77,31 +77,212 @@ import {dataGet} from "./GetData"
 
     {this.state.surveys.map(res=>{
           return(
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        paddingLeft:"70px",
-        paddingRight:"70px",
-        paddingTop:"45px",
-      }}
-    >
-    
-        <Card key={res.id} style={{minWidth:"31%",backgroundColor:"#e0f2f1", maxWidth: "345"}} >
-          <Figure>
+
+        <div className="content">
+        <div className="container-fluid">
+              <div className="row">
+            <div className="col-md-6">
+              <div className="card card-chart" key={res.id}>
+                <div className="card-header ">
+                 
+                  <Figure>
             <Figure.Image
             src={res.imagePath}
             fluid>
               </Figure.Image>
               </Figure>
-              <Typography gutterBottom variant="h5" component="h2">
+                </div>
+                <div className="card-body">
+                  <h4 className="card-title">{res.name}</h4>
+                  <p className="card-category">
+                  {res.description}</p>
+                </div>
+                <div className="card-footer">
+                  <div className="stats">
+                    <i className="material-icons"></i>we can add more fields
+                  </div>
+                </div>
+              </div>
+            </div>
 
-           {res.name}
-            {res.description}
-            </Typography>
-      </Card>
+
+            <div className="col-md-6">
+              <div className="card card-chart">
+                <div className="card-header ">
+                  <p>put image inside this div and remove this p tag</p>
+                  
+                </div>
+                <div className="card-body">
+                  <h4 className="card-title">Title</h4>
+                  <p className="card-category">description</p>
+                </div>
+                <div className="card-footer">
+                  <div className="stats">
+                    anything else we want to add
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+          </div>
+        </div>
       </div>
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
           )})}
 
       </div>

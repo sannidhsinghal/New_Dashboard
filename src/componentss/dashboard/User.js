@@ -15,25 +15,20 @@ function User() {
                 <div className="card-body">
                   <form>
                     <div className="row">
-                      <div  style={{marginTop:"20px"}}className="col-md-12">
+                      <div  style={{marginTop:"30px"}} className="col-md-6">
                         <div className="form-group">
                           <label>Company (disabled)</label>
                           <input type="text" className="form-control" disabled /><br/>
                         </div>
-                      </div> 
-                       <div className="row">
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <label >First Name</label>
-                          <input type="text" className="form-control" />
-                        </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <label>Last Name</label>
+                        <div  className="form-group">
+                          <label >FullName</label>
                           <input type="text" className="form-control" /><br/>
                         </div>
-                      </div>
+                        </div>
+                      <div style={{marginTop:"20px"}} className="col-md-6">
+                    <img className="img" src='http://i38.photobucket.com/albums/e149/eloginko/profile_male_large_zpseedb2954.jpg' />
+                 
+                </div>
                       <div className="col-md-6">
                         <div className="form-group">
                           <label>Email address</label>
@@ -46,7 +41,6 @@ function User() {
                           <input type="number" className="form-control" /><br/>
                         </div>
                       </div>
-                    </div>
                     </div>
                      <div className="row">
                       <div className="col-md-12">
@@ -86,11 +80,7 @@ function User() {
                 </div>
               </div>
             </div>
-            {/* <div className="col-md-4">
-                  <a href="javascript:;">
-                    <img className="img" src="../assets/img/faces/marc.jpg" />
-                  </a>
-                </div> */}
+            
               </div>
             </div>
           </div>

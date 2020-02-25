@@ -205,6 +205,7 @@ figure {
 img {
   vertical-align: middle;
   border-style: none;
+  width: 60%
 }
 
 svg:not(:root) {
@@ -624,7 +625,7 @@ figure {
 }
 
 img {
-  vertical-align: middle;
+  vertical-align: right;
   border-style: none;
 }
 

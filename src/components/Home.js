@@ -14,6 +14,7 @@ import { Redirect } from "react-router-dom";
 import { dataGet } from "./GetData";
 import { Row } from "react-bootstrap";
 
+
 class Home extends Component {
   constructor() {
     super();
@@ -81,22 +82,21 @@ class Home extends Component {
         <Row>
           {this.state.surveys.map(params => {
             return (
-              <div className="col-md-6" key={params.id}>
-                <Card key={params.id}>
-                  <Figure>
-                    <Figure.Image src={params.imagePath} fluid></Figure.Image>
-                  </Figure>
-                  <Card.Body>
-                    <Card.Title>{params.name}</Card.Title>
-                    <Card.Text>
-                      <br />
-                      {params.description}
-                      <br />
+              <div className="col-md-4"  key={params.id}>
+               <Card  key={params.id}>
+                  <img  src={params.imagePath} style={{width:"250px", height:"220px", display:"block", margin:"0 auto", marginTop:"20px", borderStyle:"solid", borderColor: "grey"}}/>
+                <Card.Body>
+                <Card.Title style={{textAlign:"center", color:"purple" }}><b>{params.name}</b></Card.Title>
+                <Card.Text>
+                  <div style={{textAlign:"center"}}>
+                {params.description}
+                </div>
+                  </Card.Text>
+                  <div style={{textAlign:"center"}}>
                       <label>Created On:</label>
                       {"   "}
                       {params.createdDt.slice(0, 10)}
-                      <br />
-                    </Card.Text>
+                      </div>
                   </Card.Body>
                 </Card>
               </div>

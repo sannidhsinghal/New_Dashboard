@@ -22,19 +22,20 @@ function User() {
                       </div>
                     </div>
                     <div className="row">
-                      <div className="col-md-6">
+                      <div  style={{marginTop:"30px"}} className="col-md-6">
                         <div className="form-group">
-                          <label>First Name</label>
-                          <input type="text" className="form-control" />
+                          <label>Company (disabled)</label>
+                          <input type="text" className="form-control" disabled /><br/>
                         </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <label>Last Name</label>
-                          <input type="text" className="form-control" />
-                          <br />
+                        <div  className="form-group">
+                          <label >FullName</label>
+                          <input type="text" className="form-control" /><br/>
                         </div>
-                      </div>
+                        </div>
+                      <div style={{marginTop:"20px"}} className="col-md-6">
+                    <img className="img" src='http://i38.photobucket.com/albums/e149/eloginko/profile_male_large_zpseedb2954.jpg' />
+                 
+                </div>
                       <div className="col-md-6">
                         <div className="form-group">
                           <label>Email address</label>
@@ -50,13 +51,12 @@ function User() {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-12">
-                      <div className="form-group">
-                        <label>Address</label>
-                        <input type="text" className="form-control" />
-                        <br />
+                     <div className="row">
+                      <div className="col-md-12">
+                        <div className="form-group">
+                          <label>Address</label>
+                          <input type="text" className="form-control" /><br/>
+                        </div>
                       </div>
                     </div>
                     <div className="col-md-6">
@@ -85,12 +85,13 @@ function User() {
                         <br />
                       </div>
                     </div>
-                  </div>
-                  <button type="submit" className="btn btn-primary pull-right">
-                    Update Profile
-                  </button>
-                  <div className="clearfix" />
-                </form>
+                    <button type="submit" className="btn btn-primary pull-right">Update Profile</button>
+                    <div className="clearfix" />
+                  </form>
+                </div>
+              </div>
+            </div>
+            
               </div>
             </div>
           </div>

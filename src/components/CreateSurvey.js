@@ -1,11 +1,10 @@
 import React,{Component} from 'react'
-import { Stepper, Step, StepLabel, StepContent, MenuItem } from "@material-ui/core";
+import { Stepper, Step, StepLabel,MenuItem } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
 import { Card, Button } from "react-bootstrap";
-// import { dataPost, dataGet } from "./GetData";
+import { dataPost, dataGet } from "./GetData";
 import Switch from "react-switch"
-// import FileUpload from "./FileUpload";
-import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
+import {uploadFile,uploadImage} from "./FileUpload"
 import {Spinner} from "react-bootstrap"
 import {Link} from "react-router-dom"
 
@@ -43,14 +42,14 @@ class CreateSurvey extends Component{
         this.setImage = this.setImage.bind(this)
       }
     
-    //   componentDidMount(){
-    //     dataGet('/surveyCategory/getAllSurveyCategory')
-    //     .then(response=>{
-    //       this.setState({
-    //         categories:response
-    //       })
-    //     })
-    //   }
+      componentDidMount(){
+        dataGet('/surveyCategory/getAllSurveyCategory')
+        .then(response=>{
+          this.setState({
+            categories:response
+          })
+        })
+      }
     
       handleNext() {
         this.setState({
@@ -96,14 +95,14 @@ class CreateSurvey extends Component{
           imagePath:this.state.imagePath
         };
         console.log(survey)
-    //     dataPost(`/survey/createSurvey`, survey).then(res => {
-    //       this.setState({
-    //         data:res
-    //       })
-    //       console.log(res);
-    //       console.log(res.data);
-    //     });
-    //   
+        dataPost(`/survey/createSurvey`, survey).then(res => {
+          this.setState({
+            data:res
+          })
+          console.log(res);
+          console.log(res.data);
+        });
+      
     };
     
       handleFile(e) {
@@ -111,12 +110,12 @@ class CreateSurvey extends Component{
       }
     
       setImage(){
-    //   var url = uploadImage(this.state.file)
-    //   console.log(url)
-    //   this.setState({
-    //     imagePath:url
-    //   })
-    //   console.log(this.state.imagePath)
+      var url = uploadImage(this.state.file)
+      console.log(url)
+      this.setState({
+        imagePath:url
+      })
+      console.log(this.state.imagePath)
       }
     
     
@@ -267,7 +266,7 @@ class CreateSurvey extends Component{
              <p> Please upload the excel containing the questions</p>   
                 <div style={{marginTop:"200px"}}>  
                 <TextField type="file" onChange={this.handleFile}/>
-                {/* <Button variant="login_btn" onClick={() =>uploadFile(this.state.file,this.state.data.id,this.state.data.createdById)}>Upload</Button> */}
+                <Button variant="login_btn" onClick={() =>uploadFile(this.state.file,this.state.data.id,this.state.data.createdById)}>Upload</Button>
                 <Button variant="login_btn" onClick={this.handleBack}>Back</Button>
                 <Button variant="login_btn" onClick={this.handleNext}>
                   Next
@@ -296,6 +295,9 @@ class CreateSurvey extends Component{
                 <Link to="/home"><Button>GO TO HOME SCREEN</Button></Link>
               </div>
             );
+
+          default:
+            return null;  
         }
       }
     

@@ -13,14 +13,6 @@ function User() {
               </div>
               <div className="card-body">
                 <form>
-                  <div className="row">
-                    <div style={{ marginTop: "20px" }} className="col-md-12">
-                      <div className="form-group">
-                        <label>Company (disabled)</label>
-                        <input type="text" className="form-control" disabled />
-                        <br />
-                      </div>
-                    </div>
                     <div className="row">
                       <div  style={{marginTop:"30px"}} className="col-md-6">
                         <div className="form-group">
@@ -58,7 +50,6 @@ function User() {
                           <input type="text" className="form-control" /><br/>
                         </div>
                       </div>
-                    </div>
                     <div className="col-md-6">
                       <div className="form-group">
                         <label>City</label>
@@ -85,19 +76,17 @@ function User() {
                         <br />
                       </div>
                     </div>
+                    </div>
+                      <div className="clearfix" />
                     <button type="submit" className="btn btn-primary pull-right">Update Profile</button>
-                    <div className="clearfix" />
                   </form>
-                </div>
               </div>
             </div>
-            
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+   
   );
 }
 

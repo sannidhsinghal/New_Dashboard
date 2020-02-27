@@ -123,7 +123,11 @@ class ResponseChart2 extends Component {
                 type="area"
               />
               <center>
-                <b>Responses on basis of Status</b>
+
+              <button >
+              Responses on basis of Status
+</button>
+              
               </center>
             </Card.Body>
           </Card>

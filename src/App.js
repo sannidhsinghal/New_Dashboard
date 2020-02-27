@@ -4,22 +4,16 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Page from "./components/Page.js";
 import Home from "./components/Home";
 import CreateSurvey from "./components/CreateSurvey";
-<<<<<<< HEAD
 import Dashboard from './componentss/dashboard/Dashboard.js';
 import User from './componentss/dashboard/User.js';
 import {Nav} from 'react-bootstrap';
 import SurveyTable from './componentss/dashboard/SurveyTable.js';
 import ResponseChart from './componentss/dashboard/ResponseChart.js';
-=======
-import Dashboard from "./componentss/dashboard/Dashboard.js";
-import ResponseDetails from "./components/ResponseDetails";
-import User from "./componentss/dashboard/User.js";
-import { Nav } from "react-bootstrap";
-<<<<<<< HEAD
->>>>>>> 36b79fc9f1b26f03ccfa99924e8b3d0d50acf168
-=======
+import ResponseDetails from './components/ResponseDetails.js';
+
+
 import ResponseTable from "./components/ResponseTable";
->>>>>>> e40abdc04c209ec3cc092adc461001b97cc1f650
+
 
 class App extends React.Component {
   render() {
@@ -72,27 +66,7 @@ class App extends React.Component {
     }
     return (
       <Fragment>
-<<<<<<< HEAD
-       {navBar}
-       <Router>
-        
 
-        
-         <div className="main-panel">
-         <Route exact path="/login" component={Page}/>
-         <Route exact path="/home" component={Home} />
-         <Route exact path ="/createSurvey" component={CreateSurvey}/>
-         <Route exact path="/" component={Page} />
-         <Route  path="/dashboard" component={Dashboard}/>
-         <Route exact path="/user" component={User}/>
-         <Route exact path="/chart" component={ResponseChart}/>
-        
-         </div>
-       </Router>
-    
-       </Fragment>
-     
-=======
         {navBar}
         <Router>
           <div className="main-panel">
@@ -103,11 +77,11 @@ class App extends React.Component {
             <Route path="/dashboard" component={Dashboard} />
             <Route exact path="/user" component={User} />
             <Route exact path="/response" component={ResponseTable}/>
-            <Route exact path="/responseDetails" component={ResponseDetails}/>
+           <Route exact path="/responseDetails" component={ResponseDetails}/>
           </div>
         </Router>
       </Fragment>
->>>>>>> 36b79fc9f1b26f03ccfa99924e8b3d0d50acf168
+
     );
   }
 }

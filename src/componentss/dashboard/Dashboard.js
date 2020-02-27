@@ -1,6 +1,10 @@
 import React from 'react';
 import Bar from './Chart.js';
 import Line from './Chart1.js';
+import ResponseChart1 from './ResponseChart1.js';
+import ResponseChart2 from './ResponseChart2.js';
+import ResponseChart from './ResponseChart.js';
+
 
 
 function  Dashboard() {
@@ -74,42 +78,21 @@ function  Dashboard() {
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-md-6">
-              <div className="card card-chart">
-                <div className="card-header card-header-success">
-                  <div className="ct-chart"  />
-                  <Bar/>
-                </div>
-                <div className="card-body">
-                  <h4 className="card-title">Daily Sales</h4>
-                  <p className="card-category">
-                    <span className="text-success"><i className="fa fa-long-arrow-up" /> 55% </span> increase in today sales.</p>
-                </div>
-                <div className="card-footer">
-                  <div className="stats">
-                    <i className="material-icons">access_time</i> updated 4 minutes ago
-                  </div>
-                </div>
-              </div>
+          <div className="row"  >
+            <div className="col-md-5" style={{marginRight:"5%",marginLeft:"6%"}} >
+              
+                
+                 
+                  <ResponseChart1/>
+           
+                
             </div>
-            <div className="col-md-6">
-              <div className="card card-chart">
-                <div className="card-header card-header-warning">
-                  <div className="ct-chart"  />
-                  <Line/>
-                </div>
-                <div className="card-body">
-                  <h4 className="card-title">Email Subscriptions</h4>
-                  <p className="card-category">Last Campaign Performance</p>
-                </div>
-                <div className="card-footer">
-                  <div className="stats">
-                    <i className="material-icons">access_time</i> campaign sent 2 days ago
-                  </div>
-                </div>
-              </div>
+            
+            <div className="col-md-5"style={{marginRight:"5%"}}>
+              
+                  <ResponseChart2/>
             </div>
+                
              {/* <div className="col-md-6">
               <div className="card card-chart">
                 <div className="card-header card-header-danger">

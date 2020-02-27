@@ -9,6 +9,7 @@ import Dashboard from './componentss/dashboard/Dashboard.js';
 import User from './componentss/dashboard/User.js';
 import {Nav} from 'react-bootstrap';
 import SurveyTable from './componentss/dashboard/SurveyTable.js';
+import ResponseChart from './componentss/dashboard/ResponseChart.js';
 
 class App extends React.Component {
 
@@ -67,6 +68,7 @@ class App extends React.Component {
          <Route exact path="/" component={Page} />
          <Route  path="/dashboard" component={Dashboard}/>
          <Route exact path="/user" component={User}/>
+         <Route exact path="/chart" component={ResponseChart}/>
         
          </div>
        </Router>

@@ -12,9 +12,14 @@ import SurveyTable from './componentss/dashboard/SurveyTable.js';
 import ResponseChart from './componentss/dashboard/ResponseChart.js';
 =======
 import Dashboard from "./componentss/dashboard/Dashboard.js";
+import ResponseDetails from "./components/ResponseDetails";
 import User from "./componentss/dashboard/User.js";
 import { Nav } from "react-bootstrap";
+<<<<<<< HEAD
 >>>>>>> 36b79fc9f1b26f03ccfa99924e8b3d0d50acf168
+=======
+import ResponseTable from "./components/ResponseTable";
+>>>>>>> e40abdc04c209ec3cc092adc461001b97cc1f650
 
 class App extends React.Component {
   render() {
@@ -34,7 +39,7 @@ class App extends React.Component {
           </div>
           <div className="sidebar-wrapper">
             <ul className="nav">
-              <li className="nav-item active  ">
+              <li className="nav-item">
                 <Nav.Link href="/dashboard">
                   <i className="material-icons">dashboard</i>
                   <p>Dashboard</p>
@@ -97,6 +102,8 @@ class App extends React.Component {
             <Route exact path="/" component={Page} />
             <Route path="/dashboard" component={Dashboard} />
             <Route exact path="/user" component={User} />
+            <Route exact path="/response" component={ResponseTable}/>
+            <Route exact path="/responseDetails" component={ResponseDetails}/>
           </div>
         </Router>
       </Fragment>

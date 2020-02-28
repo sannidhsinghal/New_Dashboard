@@ -43,13 +43,14 @@ class ResponseDetails extends Component {
             <Popover.Title>Image</Popover.Title>
             <Popover.Content>
               <Image
-                style={{ height: "400px", width: "1200px" }}
+                // style={{ height: "300px", width: "300px" }}
                 src={params.responseItem}
               />
             </Popover.Content>
           </Popover>
         );
         return (
+         
 
           <OverlayTrigger trigger="click" placement="top" overlay={popover}>
 
@@ -74,12 +75,19 @@ class ResponseDetails extends Component {
 
   render() {
     return (
-      
-      <div style={{ marginTop: "60px" }}>
-        <Card>
-          <Card.Header>Responses</Card.Header>
-          <Card.Body>
-            <ul>
+
+
+
+
+
+      <div className="content">
+      <div className="container-fluid">
+      <div className="row">
+      <div className="col-md-12">
+      <div class="card" >
+      <div class="card-body">
+      <h5 class="card-title">Responses</h5>
+       <p class="card-text"> <ul>
               {this.state.response.map(res => {
                 return (
                   <li style={{ marginLeft: "80px" }} key={res.responseItem}>
@@ -92,9 +100,17 @@ class ResponseDetails extends Component {
                 );
               })}
             </ul>
-          </Card.Body>
-        </Card>
+            </p>
+       
+        </div>
+        </div>
       </div>
+      </div>
+      </div>
+      </div>
+      
+      
+     
     );
   }
 }

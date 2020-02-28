@@ -3,6 +3,7 @@ import { dataGet } from "./GetData";
 import Card from "react-bootstrap/Card";
 import Figure from "react-bootstrap/Figure";
 import Popover from "react-bootstrap/Popover";
+import Modal from 'react-bootstrap/Modal';
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Image from "react-bootstrap/Image";
 
@@ -28,6 +29,16 @@ class ResponseDetails extends Component {
     switch (params.question.itemType.code) {
       case "Media":
         const popover = (
+          
+          
+
+
+
+
+
+
+
+
           <Popover id="popover-basic" outOfBoundaries="false">
             <Popover.Title>Image</Popover.Title>
             <Popover.Content>
@@ -39,7 +50,7 @@ class ResponseDetails extends Component {
           </Popover>
         );
         return (
-          <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+          <OverlayTrigger trigger="click" placement="righcenter" overlay={popover}>
             <Figure>
               <Figure.Image
                 width={171}
@@ -61,6 +72,7 @@ class ResponseDetails extends Component {
 
   render() {
     return (
+      
       <div style={{ marginTop: "60px" }}>
         <Card>
           <Card.Header>Responses</Card.Header>

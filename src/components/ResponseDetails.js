@@ -39,7 +39,7 @@ class ResponseDetails extends Component {
           </Popover>
         );
         return (
-          <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+          <OverlayTrigger trigger="click" placement="top" overlay={popover}>
             <Figure>
               <Figure.Image
                 width={171}

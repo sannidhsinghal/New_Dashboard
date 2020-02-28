@@ -7,6 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Image from "react-bootstrap/Image";
 
+
 class ResponseDetails extends Component {
   constructor() {
     super();
@@ -30,30 +31,28 @@ class ResponseDetails extends Component {
       case "Media":
         const popover = (
           
+         
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+     
+      <div class="modal-body">
+      <img  src={params.responseItem}/>
+      </div>
+     
+    </div>
+  </div>
+</div>
           
 
-
-
-
-
-
-
-
-          <Popover id="popover-basic" outOfBoundaries="false">
-            <Popover.Title>Image</Popover.Title>
-            <Popover.Content>
-              <Image
-                // style={{ height: "300px", width: "300px" }}
-                src={params.responseItem}
-              />
-            </Popover.Content>
-          </Popover>
         );
         return (
          
-
-          <OverlayTrigger trigger="click" placement="top" overlay={popover}>
-
+         
+          <OverlayTrigger trigger="click" placement="top" data-toggle="modal" data-target="#exampleModalCenter" overlay={popover} >
+           
             <Figure>
               <Figure.Image
                 width={171}

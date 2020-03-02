@@ -12,7 +12,7 @@ import Zoom from 'react-img-zoom';
 
 
 
-import ZoomImg from './ZoomImg.js';
+
 
 
 class ResponseDetails extends Component {

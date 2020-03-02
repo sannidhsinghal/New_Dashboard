@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import { dataGet } from "./GetData";
 import Card from "react-bootstrap/Card";
-import Figure from "react-bootstrap/Figure";
-import Popover from "react-bootstrap/Popover";
-import Modal from 'react-bootstrap/Modal';
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+
+
+
+
 import Image from "react-bootstrap/Image";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+
+import Zoom from 'react-img-zoom';
+
+
+
+import ZoomImg from './ZoomImg.js';
 
 
 class ResponseDetails extends Component {
@@ -29,39 +36,28 @@ class ResponseDetails extends Component {
   renderSwitch(params) {
     switch (params.question.itemType.code) {
       case "Media":
-        const popover = (
-          
-         
 
-
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-     
-      <div class="modal-body">
-      <img  src={params.responseItem}/>
-      </div>
-     
-    </div>
-  </div>
-</div>
-          
-
-        );
         return (
          
+         <div>
+           <Zoom
+  img={params.responseItem}
+  zoomScale={3}
+  width={600}
+  height={300}
+/>
+
+
+
+
+
+
+
+
+
+
+         </div>
          
-          <OverlayTrigger trigger="click" placement="top" data-toggle="modal" data-target="#exampleModalCenter" overlay={popover} >
-           
-            <Figure>
-              <Figure.Image
-                width={171}
-                height={180}
-                //alt="171x180"
-                src={params.responseItem}
-              />
-            </Figure>
-          </OverlayTrigger>
         );
 
       case "Text":

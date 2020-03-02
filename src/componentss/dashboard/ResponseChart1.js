@@ -130,7 +130,7 @@ class ResponseChart1 extends Component {
                 type="bar"
               />
               <center>
-              <button onclick={User}>
+              <button >
   No. of Responses recoorded
 </button>
               </center>

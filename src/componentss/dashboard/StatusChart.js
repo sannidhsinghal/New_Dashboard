@@ -1,39 +1,19 @@
-import React, { Componenet, Component } from "react";
+import React, {Component } from "react";
 import Card from "react-bootstrap/Card";
 import Chart from "react-apexcharts";
-import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import { dataGet } from "../../components/GetData";
 
-class ResponseChart2 extends Component {
+class StatusChart extends Component {
   constructor() {
     super();
     this.state = {
       responses: [],
       status: []
     };
-    this.handleResponses = this.handleResponses.bind(this);
-    this.handleCount = this.handleCount.bind(this);
   }
 
   componentDidMount() {
-    this.handleResponses();
-    this.handleCount();
-  }
-
-  handleResponses() {
-    dataGet(
-      "/report/surveyResponse?format=month&userId=" +
-        localStorage.getItem("userId")
-    ).then(response => {
-      console.log(response);
-      this.setState({
-        responses: response
-      });
-    });
-  }
-
-  handleCount() {
     dataGet("/report/response/status/" + localStorage.getItem("userId")).then(
       response => {
         this.setState({
@@ -44,52 +24,13 @@ class ResponseChart2 extends Component {
   }
 
   render() {
-    var chartResponse = [];
-    var labels = [];
     var statusResponse=[];
-    var months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ];
-
-    console.log(Object.values(this.state.responses));
-    this.state.responses.forEach(res => {
-      chartResponse.push({
-        name: Object.keys(res),
-        data: Object.values(res[Object.keys(res)])
-      });
-      var objects = [];
-      objects.push(Object.keys(res[Object.keys(res)]));
-      objects.forEach(obj => {
-        obj.forEach(value => {
-          if (!labels.includes(value)) {
-            labels.push(months[parseInt(value) - 1]);
-          } else {
-            console.log("Already Present");
-          }
-        });
-      });
-    });
-  
     this.state.status.forEach(res=>{
         statusResponse.push({
             name:Object.keys(res),
             data:Object.values(res[Object.keys(res)])
         })
     })
-
-
-   
 
     var statusChartData={
         options: {
@@ -136,4 +77,4 @@ class ResponseChart2 extends Component {
     );
   }
 }
-export default ResponseChart2;
+export default StatusChart;

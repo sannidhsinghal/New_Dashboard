@@ -4,24 +4,23 @@ import Chart from "react-apexcharts";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import { dataGet } from "../../components/GetData";
+import User from './User.js';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link} from 'react-router-dom';
 
-class ResponseChart extends Component {
+class MonthChart extends Component {
   constructor() {
     super();
     this.state = {
       responses: [],
       status: []
     };
-    this.handleResponses = this.handleResponses.bind(this);
-    this.handleCount = this.handleCount.bind(this);
   }
 
   componentDidMount() {
-    this.handleResponses();
-    this.handleCount();
-  }
-
-  handleResponses() {
     dataGet(
       "/report/surveyResponse?format=month&userId=" +
         localStorage.getItem("userId")
@@ -33,15 +32,6 @@ class ResponseChart extends Component {
     });
   }
 
-  handleCount() {
-    dataGet("/report/response/status/" + localStorage.getItem("userId")).then(
-      response => {
-        this.setState({
-          status: response
-        });
-      }
-    );
-  }
 
   render() {
     var chartResponse = [];
@@ -72,7 +62,7 @@ class ResponseChart extends Component {
       objects.push(Object.keys(res[Object.keys(res)]));
       objects.forEach(obj => {
         obj.forEach(value => {
-          if (!labels.includes(value)) {
+          if (!labels.includes(months[parseInt(value)-1])) {
             labels.push(months[parseInt(value) - 1]);
           } else {
             console.log("Already Present");
@@ -80,14 +70,15 @@ class ResponseChart extends Component {
         });
       });
     });
-  
     this.state.status.forEach(res=>{
-        statusResponse.push({
-            name:Object.keys(res),
-            data:Object.values(res[Object.keys(res)])
-        })
-    })
+      statusResponse.push({
+          name:Object.keys(res),
+          data:Object.values(res[Object.keys(res)])
+      })
+  })
 
+
+  
 
     var responseChartData = {
       options: {
@@ -105,44 +96,14 @@ class ResponseChart extends Component {
       series: chartResponse
     };
 
-    var statusChartData={
-        options: {
-        xaxis: {
-          categories: ["Approved","Rejected","Pending","Corrections"]
-        },
-        dataLabels: {
-          enabled: true
-        },
-        markers: {
-          size: 1
-        }
-      },
-
-      series:statusResponse
-
-    }
+ 
 
     return (
+      <Router>
       <div>
+        
         <Row>
-          <Card className="col-md-10">
-            <Card.Header className="text-right">
-              <p></p>
-            </Card.Header>
-            <Card.Body>
-              <Chart
-                options={responseChartData.options}
-                series={responseChartData.series}
-                type="area"
-              />
-              <center>
-                <b>Response report on basis of month</b>
-              </center>
-            </Card.Body>
-          </Card>
-        </Row>
-        <Row>
-          <Card className="col-md-10">
+          <Card className="col-md-12">
             <Card.Header className="text-right">
               <p></p>
             </Card.Header>
@@ -153,30 +114,21 @@ class ResponseChart extends Component {
                 type="bar"
               />
               <center>
-                <b>No of responses recorded</b>
+              <button >
+  No. of Responses recoorded
+</button>
               </center>
             </Card.Body>
           </Card>
         </Row>
-        <Row>
-          <Card className="col-md-10">
-            <Card.Header className="text-right">
-              <p></p>
-            </Card.Header>
-            <Card.Body>
-              <Chart
-                options={statusChartData.options}
-                series={statusChartData.series}
-                type="area"
-              />
-              <center>
-                <b>Responses on basis of Status</b>
-              </center>
-            </Card.Body>
-          </Card>
-        </Row>
+        <Switch>
+          <Route path="/user">
+            <User/>
+          </Route>
+        </Switch>
       </div>
+      </Router>
     );
   }
 }
-export default ResponseChart;
+export default MonthChart;

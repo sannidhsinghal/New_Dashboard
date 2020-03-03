@@ -7,8 +7,6 @@ import CreateSurvey from "./components/CreateSurvey";
 import Dashboard from './componentss/dashboard/Dashboard.js';
 import User from './componentss/dashboard/User.js';
 import {Nav} from 'react-bootstrap';
-import SurveyTable from './componentss/dashboard/SurveyTable.js';
-import ResponseChart from './componentss/dashboard/ResponseChart.js';
 import ResponseDetails from './components/ResponseDetails.js';
 
 

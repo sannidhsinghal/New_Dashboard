@@ -103,7 +103,11 @@ export class ResponseTable extends Component {
     };
 
     return (
-      <div style={{ marginTop: "60px" }}>
+      <div className="content">
+      <div className="container-fluid">
+      <div className="row">
+      <div className="col-md-12">
+     
         <MUIDataTable
           style={{ marginTop: "40%" }}
           title={"Responses"}
@@ -111,8 +115,12 @@ export class ResponseTable extends Component {
           columns={this.state.columns}
           options={options}
         />
-        <div style={{ height: "800px", width: "800px" }}></div>
+     
       </div>
+      </div>
+      </div>
+      </div>
+      
     );
   }
 }

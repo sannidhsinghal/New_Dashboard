@@ -1,9 +1,6 @@
 import React,{Component} from 'react';
-import Bar from './Chart.js';
-import Line from './Chart1.js';
-import ResponseChart1 from './ResponseChart1.js';
-import ResponseChart2 from './ResponseChart2.js';
-import ResponseChart from './ResponseChart.js';
+import MonthChart from './MonthChart';
+import StatusChart from './StatusChart.js';
 import { dataGet } from '../../components/GetData.js';
 
 
@@ -95,14 +92,14 @@ class  Dashboard extends Component {
               
                 
                  
-                  <ResponseChart1/>
+                  <MonthChart/>
            
                 
             </div>
             
             <div className="col-md-5"style={{marginRight:"5%"}}>
               
-                  <ResponseChart2/>
+                  <StatusChart/>
             </div>
                 
              {/* <div className="col-md-6">

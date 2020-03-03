@@ -287,8 +287,15 @@ class CreateSurvey extends Component{
               </Spinner>
             </div>
               )}
-    
+
           case 2:
+            return(
+              <div>
+                Preview Works!
+              </div>
+            );    
+    
+          case 3:
             return (
               <div>
                 <Button onClick={this.handleBack}>Back</Button>
@@ -303,7 +310,7 @@ class CreateSurvey extends Component{
     
       render() {
     
-        var steps = ["Enter Basic Details", "Add Questions", "Publish"];
+        var steps = ["Enter Basic Details", "Add Questions","Preview","Publish"];
         return (
           <div style={{ marginTop: "30px" }}>
             <Card

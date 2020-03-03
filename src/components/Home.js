@@ -69,6 +69,7 @@ class Home extends Component {
                 startIcon={<AddCircleIcon />}
                 onClick={event => (window.location.href = "/createSurvey")}
               >
+                
                 CREATE
               </Button>
             </div>
@@ -98,7 +99,14 @@ class Home extends Component {
                    state:{
                     survey:params
                    }}}>
-                   Responses
+                     <center>
+
+<button >
+Responses 
+</button>
+
+</center>
+               
                   </Link></Button>
                 </Card>
               </div>

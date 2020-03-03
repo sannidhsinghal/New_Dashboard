@@ -3,6 +3,7 @@ import { dataGet } from "./GetData";
 import Card from "react-bootstrap/Card";
 import Figure from "react-bootstrap/Figure";
 import Popover from "react-bootstrap/Popover";
+import Modal from "react-bootstrap/Modal";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Image from "react-bootstrap/Image";
 
@@ -28,15 +29,22 @@ class ResponseDetails extends Component {
     switch (params.question.itemType.code) {
       case "Media":
         const popover = (
-          <Popover id="popover-basic" outOfBoundaries="false">
-            <Popover.Title>Image</Popover.Title>
-            <Popover.Content>
-              <Image
-                style={{ height: "400px", width: "1200px" }}
-                src={params.responseItem}
-              />
-            </Popover.Content>
-          </Popover>
+          <div
+            class="modal fade"
+            id="exampleModalCenter"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <img src={params.responseItem} />
+                </div>
+              </div>
+            </div>
+          </div>
         );
         return (
           <OverlayTrigger trigger="click" placement="top" overlay={popover}>
@@ -61,25 +69,37 @@ class ResponseDetails extends Component {
 
   render() {
     return (
-      <div style={{ marginTop: "60px" }}>
-        <Card>
-          <Card.Header>Responses</Card.Header>
-          <Card.Body>
-            <ul>
-              {this.state.response.map(res => {
-                return (
-                  <li style={{ marginLeft: "80px" }} key={res.responseItem}>
-                    <b>
-                      {"Q."} {JSON.parse(res.question.item).title}
-                    </b>
-                    <br />
-                    {this.renderSwitch(res)}
-                  </li>
-                );
-              })}
-            </ul>
-          </Card.Body>
-        </Card>
+      <div className="content">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Responses</h5>
+                  <p class="card-text">
+                    {" "}
+                    <ul>
+                      {this.state.response.map(res => {
+                        return (
+                          <li
+                            style={{ marginLeft: "80px" }}
+                            key={res.responseItem}
+                          >
+                            <b>
+                              {"Q."} {JSON.parse(res.question.item).title}
+                            </b>
+                            <br />
+                            {this.renderSwitch(res)}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

@@ -109,11 +109,11 @@ class CreateSurvey extends Component{
         this.setState({file:e.target.files[0]})
       }
     
-      setImage(){
-      var url = uploadImage(this.state.file)
+      async setImage(){
+      var url = await uploadImage(this.state.file)
       console.log(url)
       this.setState({
-        imagePath:url
+        imagePath:url.data
       })
       console.log(this.state.imagePath)
       }
@@ -327,7 +327,6 @@ class CreateSurvey extends Component{
               </Card.Body>
             </Card>
           </div>
-          // </div>
         );
       }
     }

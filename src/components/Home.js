@@ -1,16 +1,12 @@
 import React, { Component } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Card from "react-bootstrap/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import Figure from "react-bootstrap/Figure";
 import Typography from "@material-ui/core/Typography";
-import IconLabelButtons from "./createButton.js";
 import Button from "@material-ui/core/Button";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
-import { Link } from "@material-ui/core";
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { dataGet } from "./GetData";
 import { Row } from "react-bootstrap";
 
@@ -73,6 +69,7 @@ class Home extends Component {
                 startIcon={<AddCircleIcon />}
                 onClick={event => (window.location.href = "/createSurvey")}
               >
+                
                 CREATE
               </Button>
             </div>
@@ -98,6 +95,19 @@ class Home extends Component {
                       {params.createdDt.slice(0, 10)}
                       </div>
                   </Card.Body>
+                  <Button><Link to ={{pathname:'/response',
+                   state:{
+                    survey:params
+                   }}}>
+                     <center>
+
+<button >
+Responses 
+</button>
+
+</center>
+               
+                  </Link></Button>
                 </Card>
               </div>
             );

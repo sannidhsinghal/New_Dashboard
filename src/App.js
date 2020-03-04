@@ -4,9 +4,14 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Page from "./components/Page.js";
 import Home from "./components/Home";
 import CreateSurvey from "./components/CreateSurvey";
-import Dashboard from "./componentss/dashboard/Dashboard.js";
-import User from "./componentss/dashboard/User.js";
-import { Nav } from "react-bootstrap";
+import Dashboard from './componentss/dashboard/Dashboard.js';
+import User from './componentss/dashboard/User.js';
+import {Nav} from 'react-bootstrap';
+import ResponseDetails from './components/ResponseDetails.js';
+
+
+import ResponseTable from "./components/ResponseTable";
+
 
 class App extends React.Component {
   render() {
@@ -26,7 +31,7 @@ class App extends React.Component {
           </div>
           <div className="sidebar-wrapper">
             <ul className="nav">
-              <li className="nav-item active  ">
+              <li className="nav-item">
                 <Nav.Link href="/dashboard">
                   <i className="material-icons">dashboard</i>
                   <p>Dashboard</p>
@@ -59,6 +64,7 @@ class App extends React.Component {
     }
     return (
       <Fragment>
+
         {navBar}
         <Router>
           <div className="main-panel">
@@ -68,9 +74,12 @@ class App extends React.Component {
             <Route exact path="/" component={Page} />
             <Route path="/dashboard" component={Dashboard} />
             <Route exact path="/user" component={User} />
+            <Route exact path="/response" component={ResponseTable}/>
+           <Route exact path="/responseDetails" component={ResponseDetails}/>
           </div>
         </Router>
       </Fragment>
+
     );
   }
 }

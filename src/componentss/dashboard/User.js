@@ -26,23 +26,22 @@ render(){
     <div className="content">
       <div className="container-fluid">
         <div className="row">
-          <div className="col-md-12">
+
+          <div className="col-md-12" style={{display:"Flex", justifyContent:"center"}} >
             <div className="card">
               <div className="card-header card-header-primary">
                 <h4 className="card-title">Edit Profile</h4>
                 <p className="card-category">Complete your profile</p>
               </div>
-              
               <div className="card-body">
                 <form>
-                
                     <div className="row">
-                      <div  style={{marginTop:"30px"}} className="col-md-6">
-                        <div className="form-group">
+                      <div className="col-md-6">
+                        <div className="form-group" style={{marginTop:"30px",display:"flex",justifyContent:"flex-start",marginLeft:"-26.5%",flexDirection:"column"}} >
                           <label>Company (disabled)</label>
                           <input type="text" className="form-control" disabled /><br/>
                         </div>
-                        <div  className="form-group">
+                        <div  className="form-group" style={{marginTop:"30px",display:"flex",justifyContent:"flex-start",marginLeft:"-26.5%",flexDirection:"column"}} >
                           <label >FullName</label>
                           <input type="text" className="form-control" value={this.state.user.fullName}/><br/>
                         </div>
@@ -51,14 +50,14 @@ render(){
                     <img className="img" src='http://i38.photobucket.com/albums/e149/eloginko/profile_male_large_zpseedb2954.jpg' />
                       </div>
                       <div className="col-md-6">
-                        <div className="form-group">
+                        <div className="form-group" style={{marginTop:"30px",display:"flex",justifyContent:"flex-start",marginLeft:"-26.5%",flexDirection:"column"}} >
                           <label>Email address</label>
                           <input type="email" className="form-control" value={this.state.user.emailId}/>
                           <br />
                         </div>
                       </div>
                       <div className="col-md-6">
-                        <div className="form-group">
+                        <div className="form-group" style={{marginTop:"30px",display:"flex",justifyContent:"flex-start",marginLeft:"-26.5%"}} >
                           <label>Contact No.</label>
                           <input type="number" className="form-control" value={this.state.user.phoneNumber} />
                           <br />

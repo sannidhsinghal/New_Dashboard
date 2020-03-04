@@ -26,8 +26,8 @@ render(){
     <div className="content">
       <div className="container-fluid">
         <div className="row">
+              <div className="col-md-8" >
 
-          <div className="col-md-12" style={{display:"Flex", justifyContent:"center"}} >
             <div className="card">
               <div className="card-header card-header-primary">
                 <h4 className="card-title">Edit Profile</h4>

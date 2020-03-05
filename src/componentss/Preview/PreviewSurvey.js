@@ -6,7 +6,7 @@ import {dataGet} from '../../components/GetData.js'
 
 
 class PreviewSurvey extends Component{
-    constructor(){
+    constructor(props){
         super();
         this.state={
             obj: [],
@@ -15,27 +15,38 @@ class PreviewSurvey extends Component{
     
 componentDidMount(){
      console.log("Component called")
-        dataGet("/survey/getquestions?surveyId=1")
+        dataGet("/survey/getquestions?surveyId="+this.props.id)
             .then(result=>{
            this.setState({
                obj:result 
            })
-           console.log(this.state.obj)
-           ;           
+           console.log(this.state.obj)           
         })
-    }       
+    }
         
 render(){
     return(
-        <div style={{marginTop:"100px", marginLeft:"90px", }}>
-           <h1 style={{textAlign:"center"}}>Survey Form</h1> 
-           <div style={{marginBottom:"20px"}}>
-            {this.state.obj.forEach(res=>{
-                var queItem = JSON.parse(res.item)
-                if (queItem.itemType === "Text") {
-        return (
+        <div className="content">
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-12" >
+            <div className="card">
+              <div className="card-header card-header-primary">
+        <div style={{marginTop:"5px" }}>
+           <h1 className="card-title" style={{textAlign:"center"}}>{this.props.Title}</h1> 
+            </div>
+            </div>
+            <div className="card-body">
+             <div className="row">
+              <div className="col-md-12">
+            {this.state.obj.map(res=>{
                 
-            <InText 
+                var queItem = JSON.parse(res.item)
+                
+                if (queItem.itemType === "Text") {
+                    return ( 
+            <div style={{paddingBottom:"5px", fontSize:"16px"}}>
+            <InText
              title={queItem.title}
             itemType = {queItem.itemType}
             placeholder={queItem.placeholder}
@@ -43,8 +54,10 @@ render(){
             key={queItem.placeholder}
             handleChange={this.handleChange}
             />
+            </div>
         )
     }
+    
 
     if (queItem.itemType === "checkbox"){
         return (
@@ -61,6 +74,8 @@ render(){
 
     if (queItem.itemType === "Media"){
         return (
+            <div style={{paddingBottom:"5px", fontSize:"16px"}}>
+
             <InMedia 
             title={queItem.title}
             itemType={queItem.itemType}
@@ -69,14 +84,23 @@ render(){
             key={queItem.placeholder}
             handleChange={this.handleChange}
             />
+            </div>
         )
-    }         
+    }     
         
     })}
+        
+    {/* <button style={{display:"flex", margin:"auto"}} type="submit"> Next</button> */}
+    </div>
+    </div>
+   
+    </div>
         </div>
-
-    <button style={{display:"flex", margin:"auto"}} type="submit"> Submit</button>
         </div>
+        </div>
+        </div>
+         </div>
+    
     )
 }}
 

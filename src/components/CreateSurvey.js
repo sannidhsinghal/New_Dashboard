@@ -7,7 +7,7 @@ import Switch from "react-switch"
 import {uploadFile,uploadImage} from "./FileUpload"
 import {Spinner} from "react-bootstrap"
 import {Link} from "react-router-dom"
-
+import PreviewSurvey from "../componentss/Preview/PreviewSurvey"
 
 
 
@@ -29,7 +29,9 @@ class CreateSurvey extends Component{
           data:[],
           categories:[],
           imagePath:"",
-          file:null
+          file:null,
+          surveyId:"",
+          Name: ""
         };
         this.handleNext = this.handleNext.bind(this);
         this.handleBack = this.handleBack.bind(this);
@@ -97,7 +99,9 @@ class CreateSurvey extends Component{
         console.log(survey)
         dataPost(`/survey/createSurvey`, survey).then(res => {
           this.setState({
-            data:res
+            data:res,
+            surveyId:res.id,
+            Name:res.name
           })
           console.log(res);
           console.log(res.data);
@@ -288,7 +292,20 @@ class CreateSurvey extends Component{
             </div>
               )}
     
-          case 2:
+              case 2:
+                return(
+                  <div>
+                  <PreviewSurvey
+                    id={this.state.surveyId}
+                    Title={this.state.Name}
+                  />
+                  <Button onClick={this.handleNext}>Next</Button>
+                  <Button onClick={this.handleBack}>Back</Button>
+
+                  </div>
+                )
+
+          case 3:
             return (
               <div>
                 <Button onClick={this.handleBack}>Back</Button>
@@ -303,7 +320,7 @@ class CreateSurvey extends Component{
     
       render() {
     
-        var steps = ["Enter Basic Details", "Add Questions", "Publish"];
+        var steps = ["Enter Basic Details", "Add Questions","Preview", "Publish"];
         return (
           <div style={{ marginTop: "30px" }}>
             <Card

@@ -8,6 +8,7 @@ import Dashboard from './componentss/dashboard/Dashboard.js';
 import User from './componentss/dashboard/User.js';
 import {Nav} from 'react-bootstrap';
 import ResponseDetails from './components/ResponseDetails.js';
+import PreviewSurvey from './componentss/Preview/PreviewSurvey.js'
 
 
 import ResponseTable from "./components/ResponseTable";
@@ -76,6 +77,7 @@ class App extends React.Component {
             <Route exact path="/user" component={User} />
             <Route exact path="/response" component={ResponseTable}/>
            <Route exact path="/responseDetails" component={ResponseDetails}/>
+           <Route exact path="/preview" component={PreviewSurvey}/>
           </div>
         </Router>
       </Fragment>

@@ -2,8 +2,7 @@ import React from 'react'
 
 const InMCQ = ({ title,itemType, placeholder,required, handleChange}) =>(
     <div>
-        <label style={{display:"flex", justifyContent:"center", paddingBottom:"5px"}}>{title}</label><br/>
-        <div style={{display:"flex", justifyContent:"center", marginBottom:"10px"}}>
+        <h5><b>{title}</b></h5>
         <input
         type="checkbox"
         // value={title}
@@ -11,8 +10,9 @@ const InMCQ = ({ title,itemType, placeholder,required, handleChange}) =>(
         placeholder={placeholder}
         required={required}
         onChange={handleChange}
+        disabled
         />
 </div>
-        </div>
+
 );
 export default InMCQ

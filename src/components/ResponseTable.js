@@ -31,7 +31,7 @@ export class ResponseTable extends Component {
   }
 
   componentDidMount() {
-    dataGet("/response/survey/1").then(res => {
+    dataGet("/response/survey/"+this.props.location.state.survey.id).then(res => {
       this.setState({
         responses: res
       });

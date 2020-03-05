@@ -127,7 +127,10 @@ class CreateSurvey extends Component{
         switch (params) {
           case 0:
             return (
-              <div className="container" style={{position:"relative"}}>
+              <div className="content">
+              <div className="container-fluid" style={{position:"relative"}}>
+              <div className="row ">
+             
                 <label>Name: </label>
                 <TextField
                   variant="outlined"
@@ -259,6 +262,9 @@ class CreateSurvey extends Component{
                   Submit
                 </Button>
               </div>
+              </div>
+              </div>
+         
             );
     
           case 1:
@@ -322,14 +328,12 @@ class CreateSurvey extends Component{
     
         var steps = ["Enter Basic Details", "Add Questions","Preview", "Publish"];
         return (
-          <div style={{ marginTop: "30px" }}>
-            <Card
-              style={{
-                justifyContent: "center",
-                width: "80rem",
-                marginLeft: "100px"
-              }}
-            >
+          <div className="content">
+          <div className="container-fluid">
+          <div className="row " style={{display:"flex",justifyContent:"center"}}  >
+            
+         
+            <Card>
               <Card.Body className="p-4">
                 <Stepper activeStep={this.state.activeStep}>
                   {steps.map(step => {
@@ -343,6 +347,9 @@ class CreateSurvey extends Component{
                 {this.getStepContent(this.state.activeStep)}
               </Card.Body>
             </Card>
+        
+          </div>
+          </div>
           </div>
         );
       }

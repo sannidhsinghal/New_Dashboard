@@ -26,7 +26,7 @@ render(){
     <div className="content">
       <div className="container-fluid">
         <div className="row">
-              <div className="col-md-8" >
+              <div className="col-md-12" >
 
             <div className="card">
               <div className="card-header card-header-primary">
@@ -35,8 +35,8 @@ render(){
               </div>
               <div className="card-body">
                 <form>
-                    <div className="row">
-                      <div className="col-md-6">
+                    <div className="row ml-auto">
+                      <div className="col-md-6 ">
                         <div className="form-group" style={{marginTop:"30px",display:"flex",justifyContent:"flex-start",marginLeft:"-26.5%",flexDirection:"column"}} >
                           <label>Company (disabled)</label>
                           <input type="text" className="form-control" disabled /><br/>
@@ -64,7 +64,7 @@ render(){
                         </div>
                       </div>
                     </div>
-                     <div className="row">
+                     <div className="row " style={{marginLeft:"-1%"}}>
                       <div className="col-md-12">
                         <div className="form-group">
                           <label>Address</label>

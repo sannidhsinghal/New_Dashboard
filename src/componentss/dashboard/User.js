@@ -1,5 +1,6 @@
 import React,{Component} from "react";
 import {dataGet} from "../../components/GetData"
+import Image from "react-bootstrap/Image";
 
 class User extends Component {
 constructor(){
@@ -37,27 +38,27 @@ render(){
                 <form>
                     <div className="row ml-auto">
                       <div className="col-md-6 ">
-                        <div className="form-group" style={{marginTop:"30px",display:"flex",justifyContent:"flex-start",marginLeft:"-26.5%",flexDirection:"column"}} >
+                        <div className="form-group" style={{marginTop:"30px",display:"flex",justifyContent:"flex-start",marginLeft:"-2%",flexDirection:"column"}} >
                           <label>Company (disabled)</label>
                           <input type="text" className="form-control" disabled /><br/>
                         </div>
-                        <div  className="form-group" style={{marginTop:"30px",display:"flex",justifyContent:"flex-start",marginLeft:"-26.5%",flexDirection:"column"}} >
+                        <div  className="form-group" style={{marginTop:"30px",display:"flex",justifyContent:"flex-start",marginLeft:"-2%",flexDirection:"column"}} >
                           <label >FullName</label>
                           <input type="text" className="form-control" value={this.state.user.fullName}/><br/>
                         </div>
                         </div>
                       <div style={{marginTop:"20px"}} className="col-md-6">
-                    <img className="img" src='http://i38.photobucket.com/albums/e149/eloginko/profile_male_large_zpseedb2954.jpg' />
+                       <Image className="img" src={this.state.user.profilePicPath} rounded />
                       </div>
                       <div className="col-md-6">
-                        <div className="form-group" style={{marginTop:"30px",display:"flex",justifyContent:"flex-start",marginLeft:"-26.5%",flexDirection:"column"}} >
+                        <div className="form-group" style={{marginTop:"30px",display:"flex",justifyContent:"flex-start",marginLeft:"-2%",flexDirection:"column"}} >
                           <label>Email address</label>
                           <input type="email" className="form-control" value={this.state.user.emailId}/>
                           <br />
                         </div>
                       </div>
                       <div className="col-md-6">
-                        <div className="form-group" style={{marginTop:"30px",display:"flex",justifyContent:"flex-start",marginLeft:"-26.5%"}} >
+                        <div className="form-group" style={{marginTop:"30px",display:"flex",justifyContent:"flex-start",marginLeft:"-2%"}} >
                           <label>Contact No.</label>
                           <input type="number" className="form-control" value={this.state.user.phoneNumber} />
                           <br />

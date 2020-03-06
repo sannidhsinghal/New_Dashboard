@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 import { dataGet } from "./GetData";
 import { Row } from "react-bootstrap";
 
-
 class Home extends Component {
   constructor() {
     super();
@@ -39,7 +38,7 @@ class Home extends Component {
           className="col-md-9"
           style={{ marginTop: "10px", marginLeft: "15%" }}
         >
-          <Card style={{ backgroundColor: "#e8eaf6", maxWidth: "38" }}>
+          <Card>
             <CardActionArea>
               <CardContent>
                 <Typography
@@ -61,17 +60,16 @@ class Home extends Component {
               </CardContent>
             </CardActionArea>
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <Button
+              <button
                 variant="contained"
                 color="primary"
                 size="large"
                 // className={classes.button}
-                startIcon={<AddCircleIcon />}
+               
                 onClick={event => (window.location.href = "/createSurvey")}
               >
-                
                 CREATE
-              </Button>
+              </button>
             </div>
             <CardActions />
           </Card>
@@ -79,35 +77,51 @@ class Home extends Component {
         <Row>
           {this.state.surveys.map(params => {
             return (
-              <div className="col-md-4"  key={params.id}>
-               <Card  key={params.id}>
-                  <img  src={params.imagePath} style={{width:"250px", height:"220px", display:"block", margin:"0 auto", marginTop:"20px", borderStyle:"solid", borderColor: "grey"}}/>
-                <Card.Body>
-                <Card.Title style={{textAlign:"center", color:"purple" }}><b>{params.name}</b></Card.Title>
-                <Card.Text>
-                  <div style={{textAlign:"center"}}>
-                {params.description}
-                </div>
-                  </Card.Text>
-                  <div style={{textAlign:"center"}}>
+              <div className="col-md-4" key={params.id}>
+                <Card key={params.id}>
+                  <img
+                    src={params.imagePath}
+                    style={{
+                      width: "250px",
+                      height: "220px",
+                      display: "block",
+                      margin: "0 auto",
+                      marginTop: "20px",
+                      borderStyle: "solid",
+                      borderColor: "grey"
+                    }}
+                  />
+                  <Card.Body>
+                    <Card.Title
+                      style={{ textAlign: "center", color: "purple" }}
+                    >
+                      <b>{params.name}</b>
+                    </Card.Title>
+                    <Card.Text>
+                      <div style={{ textAlign: "center" }}>
+                        {params.description}
+                      </div>
+                    </Card.Text>
+                    <div style={{ textAlign: "center" }}>
                       <label>Created On:</label>
                       {"   "}
                       {params.createdDt.slice(0, 10)}
-                      </div>
+                    </div>
                   </Card.Body>
-                  <Button><Link to ={{pathname:'/response',
-                   state:{
-                    survey:params
-                   }}}>
-                     <center>
-
-<button >
-Responses 
-</button>
-
-</center>
-               
-                  </Link></Button>
+                  <Button>
+                    <Link
+                      to={{
+                        pathname: "/response",
+                        state: {
+                          survey: params
+                        }
+                      }}
+                    >
+                      <center>
+                        <button>Responses</button>
+                      </center>
+                    </Link>
+                  </Button>
                 </Card>
               </div>
             );

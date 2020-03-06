@@ -25,11 +25,11 @@ class ResponseDetails extends Component {
     switch (params.question.itemType.code) {
       case "Media":
         return (
-          <Card>
+          <Card style={{width:"600px",height:"350px"}}>
             <Card.Body>
             <TransformWrapper>
                <TransformComponent>
-                   <img src={params.responseItem} alt="test" />
+                   <img style ={{width:"550px",height:"300px"}} src={params.responseItem} alt="test" />
                 </TransformComponent>
                 </TransformWrapper>
             </Card.Body>
@@ -62,12 +62,12 @@ class ResponseDetails extends Component {
                       {this.state.response.map(res => {
                         return (
                           <li
-                            style={{ marginLeft: "80px" }}
+                           
                             key={res.responseItem}
                           >
-                            <strong>
-                              {"Q."} {JSON.parse(res.question.item).title}
-                            </strong>
+                            <h5>
+                              <b> {"Q."} {JSON.parse(res.question.item).title}</b>
+                             </h5>
                             <br />
                             {this.renderSwitch(res)}
                           </li>

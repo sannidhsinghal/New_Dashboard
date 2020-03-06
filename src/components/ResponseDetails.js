@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { dataGet } from "./GetData";
 import Card from "react-bootstrap/Card";
-import Zoom from "react-img-zoom";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 class ResponseDetails extends Component {
   constructor() {
@@ -25,18 +25,22 @@ class ResponseDetails extends Component {
     switch (params.question.itemType.code) {
       case "Media":
         return (
-          <div>
-            <Zoom
-              img={params.responseItem}
-              zoomScale={2}
-              width={600}
-              height={300}
-            />
-          </div>
+          <Card>
+            <Card.Body>
+            <TransformWrapper>
+               <TransformComponent>
+                   <img src={params.responseItem} alt="test" />
+                </TransformComponent>
+                </TransformWrapper>
+            </Card.Body>
+          </Card>
         );
 
       case "Text":
-        return <div>{params.responseItem}</div>;
+        return <Card>
+        <Card.Body>{params.responseItem}</Card.Body>
+      </Card>
+        ;
 
       default:
         return <div>No response recorded</div>;
@@ -49,10 +53,10 @@ class ResponseDetails extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-12">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Responses</h5>
-                  <p class="card-text">
+              <div className="card">
+                <div className="card-body">
+                  <h4 className="card-title" style={{display:"flex",justifyContent:"center",fontSize:"25px"}}><strong>Responses</strong></h4>
+                  <p className="card-text">
                     {" "}
                     <ul>
                       {this.state.response.map(res => {
@@ -61,9 +65,9 @@ class ResponseDetails extends Component {
                             style={{ marginLeft: "80px" }}
                             key={res.responseItem}
                           >
-                            <b>
+                            <strong>
                               {"Q."} {JSON.parse(res.question.item).title}
-                            </b>
+                            </strong>
                             <br />
                             {this.renderSwitch(res)}
                           </li>

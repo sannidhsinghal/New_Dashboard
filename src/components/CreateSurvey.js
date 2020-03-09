@@ -8,14 +8,14 @@ import {uploadFile,uploadImage} from "./FileUpload"
 import {Spinner} from "react-bootstrap"
 import {Link} from "react-router-dom"
 import PreviewSurvey from "../componentss/Preview/PreviewSurvey"
-
-
+import AddQuestion from "../componentss/AddQuestions"
 
 
 class CreateSurvey extends Component{
     constructor() {
         super();
         this.state = {
+          param: "",
           baseLanguage: "",
           categoryId: 0,
           description: "",
@@ -31,7 +31,7 @@ class CreateSurvey extends Component{
           imagePath:"",
           file:null,
           surveyId:"",
-          Name: ""
+    
         };
         this.handleNext = this.handleNext.bind(this);
         this.handleBack = this.handleBack.bind(this);
@@ -266,6 +266,7 @@ class CreateSurvey extends Component{
               </div>
          
             );
+          
     
           case 1:
             console.log(this.state.data)
@@ -301,9 +302,22 @@ class CreateSurvey extends Component{
               case 2:
                 return(
                   <div>
+                    <AddQuestion 
+                     id={this.state.surveyId}
+                     Title={this.state.name}
+                     />
+                      <Button onClick={this.handleNext}>Next</Button>
+                      <Button onClick={this.handleBack}>Back</Button>
+                      </div>
+                ) 
+
+                
+              case 3:
+                return(
+                  <div>
                   <PreviewSurvey
                     id={this.state.surveyId}
-                    Title={this.state.Name}
+                    Title={this.state.name}
                   />
                   <Button onClick={this.handleNext}>Next</Button>
                   <Button onClick={this.handleBack}>Back</Button>
@@ -311,7 +325,7 @@ class CreateSurvey extends Component{
                   </div>
                 )
 
-          case 3:
+          case 4:
             return (
               <div>
                 <Button onClick={this.handleBack}>Back</Button>
@@ -326,7 +340,7 @@ class CreateSurvey extends Component{
     
       render() {
     
-        var steps = ["Enter Basic Details", "Add Questions","Preview", "Publish"];
+        var steps = ["Enter Basic Details", "Add Questions","Edit Survey", "Preview", "Publish"];
         return (
           <div className="content">
           <div className="container-fluid">

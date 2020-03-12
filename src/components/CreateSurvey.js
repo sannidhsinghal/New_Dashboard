@@ -278,7 +278,7 @@ class CreateSurvey extends Component {
 
       case 1:
         console.log(this.state.data);
-        const questionTypes=["MCQ","SCQ","Text","Number","Media","Signature","Email","File_Upload","Bar_Code"]
+        const questionTypes=["MCQ","SCQ","Text","Number","Media","Signature","Email","File_Upload","Bar_Code","Location"]
         // if(this.state.data.length!==0){
         return (
           <div>
@@ -377,15 +377,15 @@ class CreateSurvey extends Component {
       case "MCQ":
         return (
           <>
-            <TextField variant="outlined" placeholder="option 1"></TextField>
+            <TextField variant="outlined" placeholder="option 1" name="option1"></TextField>
             <br />
-            <TextField variant="outlined" placeholder="option 2"></TextField>
+            <TextField variant="outlined" placeholder="option 2" name="option2"></TextField>
             <br />
-            <TextField variant="outlined" placeholder="option 3"></TextField>
+            <TextField variant="outlined" placeholder="option 3" name="option3"></TextField>
             <br />
-            <TextField variant="outlined" placeholder="option 4"></TextField>
+            <TextField variant="outlined" placeholder="option 4" name="option4"></TextField>
             <br />
-            <TextField variant="outlined" placeholder="option 5"></TextField>
+            <TextField variant="outlined" placeholder="option 5" name="option5"></TextField>
             <br />
           </>
         );
@@ -404,15 +404,15 @@ class CreateSurvey extends Component {
       case "SCQ":
         return (
           <>
-            <TextField variant="outlined" placeholder="option 1"></TextField>
+            <TextField variant="outlined" placeholder="option 1" name="option1"></TextField>
             <br />
-            <TextField variant="outlined" placeholder="option 2"></TextField>
+            <TextField variant="outlined" placeholder="option 2" name="option2"></TextField>
             <br />
-            <TextField variant="outlined" placeholder="option 3"></TextField>
+            <TextField variant="outlined" placeholder="option 3" name="option3"></TextField>
             <br />
-            <TextField variant="outlined" placeholder="option 4"></TextField>
+            <TextField variant="outlined" placeholder="option 4" name="option4"></TextField>
             <br />
-            <TextField variant="outlined" placeholder="option 5"></TextField>
+            <TextField variant="outlined" placeholder="option 5" name="option5"></TextField>
             <br />
           </>
         );
@@ -422,6 +422,7 @@ class CreateSurvey extends Component {
             <TextField
               variant="outlined"
               placeholder="Reference Title"
+              name="ref_title"
             ></TextField>
             <br />
             <TextField variant="outlined" placeholder="Others"></TextField>
@@ -434,6 +435,7 @@ class CreateSurvey extends Component {
             <TextField
               variant="outlined"
               placeholder="Reference Title"
+              name="ref_title"
             ></TextField>
             <br />
             <TextField variant="outlined" placeholder="Others"></TextField>
@@ -446,6 +448,7 @@ class CreateSurvey extends Component {
             <TextField
               variant="outlined"
               placeholder="Reference Title"
+              name="ref_title"
             ></TextField>
             <br />
             <TextField variant="outlined" placeholder="Others"></TextField>
@@ -458,6 +461,7 @@ class CreateSurvey extends Component {
             <TextField
               variant="outlined"
               placeholder="Reference Title"
+              name="ref_title"
             ></TextField>
             <br />
             <TextField variant="outlined" placeholder="Others"></TextField>
@@ -470,12 +474,47 @@ class CreateSurvey extends Component {
             <TextField
               variant="outlined"
               placeholder="Reference Title"
+              name="ref_title"
             ></TextField>
             <br />
             <TextField variant="outlined" placeholder="Others"></TextField>
             <br />
           </>
         );
+
+      case "Media":
+        return(
+          <>
+          <TextField
+          variant="outlined"
+          placeholder="Reference Title"
+          name="ref_title"
+          ></TextField><br/>
+          <TextField  name="format" helperText="Please select a format" select>
+            <MenuItem value="image">Image</MenuItem>
+            <MenuItem value="audio">Audio</MenuItem>
+            <MenuItem value="video">Video</MenuItem>
+          </TextField>
+          </>
+        )
+      case "Number":
+        return(
+          <>
+          <TextField variant="outlined" placeholder="Lower Limit" name="lower_limit"></TextField><br/>
+          <TextField variant="outlined" placeholder="Upper Limit"name="upper_limit"></TextField><br/>
+          <TextField variant="outlined" placeholder="Others" name="others"></TextField>
+          </>
+
+        );
+      
+      case "Location":
+        return(
+          <>
+          <TextField variant="outlined" placeholder="Reference Title" name="ref_title"></TextField><br/>
+          <TextField variant="outlined" placeholder="Location Settings"name="settings"></TextField><br/>
+          <TextField variant="outlined" placeholder="Others" name="others"></TextField>
+          </>
+        )  
       default:
         return null;
     }

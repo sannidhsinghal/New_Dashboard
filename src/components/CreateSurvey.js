@@ -29,7 +29,8 @@ class CreateSurvey extends Component {
       file: null,
       surveyId: "",
       itemType: "",
-      setShow: false
+      setShow: false,
+      isMandatory:false
     };
     this.handleNext = this.handleNext.bind(this);
     this.handleBack = this.handleBack.bind(this);
@@ -42,6 +43,7 @@ class CreateSurvey extends Component {
     this.setImage = this.setImage.bind(this);
     this.handleModal = this.handleModal.bind(this);
     this.getQuestionFields = this.getQuestionFields.bind(this);
+    this.handleMandatory = this.handleMandatory.bind(this);
   }
 
   componentDidMount() {
@@ -84,6 +86,10 @@ class CreateSurvey extends Component {
 
   handleApproval(approvalRequired) {
     this.setState({ approvalRequired });
+  }
+
+  handleMandatory(isMandatory){
+    this.setState({isMandatory});
   }
   handleSubmit = event => {
     event.preventDefault();
@@ -278,7 +284,7 @@ class CreateSurvey extends Component {
 
       case 1:
         console.log(this.state.data);
-        const questionTypes=["MCQ","SCQ","Text","Number","Media","Signature","Email","File_Upload","Bar_Code","Location"]
+        const questionTypes=["MCQ","SCQ","Text","Number","Date_Time","Location","Email","Bar_Code","File_Upload","Likart_Scale","Scale","Rating","Media"]
         // if(this.state.data.length!==0){
         return (
           <div>
@@ -296,15 +302,34 @@ class CreateSurvey extends Component {
                     <TextField
                       variant="outlined"
                       placeholder="Title"
+                      fullWidth
                     ></TextField>
                     <br />
                     <TextField
                       variant="outlined"
                       placeholder="Description"
+                      fullWidth
                     ></TextField>
                     <br />
-                    <label>Should the question be mandatory</label><br/>
-                    <TextField select name="itemType" helperText="Please select a type" onChange={this.handleChange} value={this.state.itemType}>
+                    <label><b>Should the question be mandatory</b></label>
+                    <Switch
+                  name="isMandatory"
+                  onChange={this.handleMandatory}
+                  checked={this.state.isMandatory}
+                  onColor="#bf8300"
+                  onHandleColor="#ffff"
+                  handleDiameter={20}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                  activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                  height={15}
+                  width={45}
+                /><br/>
+                    <TextField variant="outlined" fullWidth placeholder="Reference Title" name="ref_title"></TextField><br/>
+                    <TextField variant="outlined" fullWidth placeholder="Others" name="others"></TextField><br/>
+                   <label><b>Please select the question type</b></label>
+                    <TextField variant="outlined" fullWidth select name="itemType" onChange={this.handleChange} value={this.state.itemType}>
                       {questionTypes.map(questionType=>(
                         <MenuItem key={questionType} value={questionType}>
                           {questionType}
@@ -377,120 +402,68 @@ class CreateSurvey extends Component {
       case "MCQ":
         return (
           <>
-            <TextField variant="outlined" placeholder="option 1" name="option1"></TextField>
+            <TextField variant="outlined" placeholder="option 1" fullWidth name="option1"></TextField>
             <br />
-            <TextField variant="outlined" placeholder="option 2" name="option2"></TextField>
+            <TextField variant="outlined" placeholder="option 2" fullWidth name="option2"></TextField>
             <br />
-            <TextField variant="outlined" placeholder="option 3" name="option3"></TextField>
+            <TextField variant="outlined" placeholder="option 3" fullWidth name="option3"></TextField>
             <br />
-            <TextField variant="outlined" placeholder="option 4" name="option4"></TextField>
+            <TextField variant="outlined" placeholder="option 4" fullWidth name="option4"></TextField>
             <br />
-            <TextField variant="outlined" placeholder="option 5" name="option5"></TextField>
+            <TextField variant="outlined" placeholder="option 5" fullWidth name="option5"></TextField>
             <br />
           </>
         );
       case "Text":
         return (
           <>
-            <TextField
-              variant="outlined"
-              placeholder="Reference Title"
-            ></TextField>
-            <br />
-            <TextField variant="outlined" placeholder="Others"></TextField>
-            <br />
           </>
         );
       case "SCQ":
         return (
           <>
-            <TextField variant="outlined" placeholder="option 1" name="option1"></TextField>
+            <TextField variant="outlined" placeholder="option 1" fullWidth name="option1"></TextField>
             <br />
-            <TextField variant="outlined" placeholder="option 2" name="option2"></TextField>
+            <TextField variant="outlined" placeholder="option 2" fullWidth name="option2"></TextField>
             <br />
-            <TextField variant="outlined" placeholder="option 3" name="option3"></TextField>
+            <TextField variant="outlined" placeholder="option 3" fullWidth name="option3"></TextField>
             <br />
-            <TextField variant="outlined" placeholder="option 4" name="option4"></TextField>
+            <TextField variant="outlined" placeholder="option 4" fullWidth name="option4"></TextField>
             <br />
-            <TextField variant="outlined" placeholder="option 5" name="option5"></TextField>
+            <TextField variant="outlined" placeholder="option 5" fullWidth name="option5"></TextField>
             <br />
           </>
         );
       case "Bar_Code":
         return (
           <>
-            <TextField
-              variant="outlined"
-              placeholder="Reference Title"
-              name="ref_title"
-            ></TextField>
-            <br />
-            <TextField variant="outlined" placeholder="Others"></TextField>
-            <br />
           </>
         );
       case "Signature":
         return (
           <>
-            <TextField
-              variant="outlined"
-              placeholder="Reference Title"
-              name="ref_title"
-            ></TextField>
-            <br />
-            <TextField variant="outlined" placeholder="Others"></TextField>
-            <br />
           </>
         );
       case "Email":
         return (
           <>
-            <TextField
-              variant="outlined"
-              placeholder="Reference Title"
-              name="ref_title"
-            ></TextField>
-            <br />
-            <TextField variant="outlined" placeholder="Others"></TextField>
-            <br />
           </>
         );
       case "File_Upload":
         return (
           <>
-            <TextField
-              variant="outlined"
-              placeholder="Reference Title"
-              name="ref_title"
-            ></TextField>
-            <br />
-            <TextField variant="outlined" placeholder="Others"></TextField>
-            <br />
           </>
         );
       case "Rating":
         return (
           <>
-            <TextField
-              variant="outlined"
-              placeholder="Reference Title"
-              name="ref_title"
-            ></TextField>
-            <br />
-            <TextField variant="outlined" placeholder="Others"></TextField>
-            <br />
           </>
         );
 
       case "Media":
         return(
           <>
-          <TextField
-          variant="outlined"
-          placeholder="Reference Title"
-          name="ref_title"
-          ></TextField><br/>
-          <TextField  name="format" helperText="Please select a format" select>
+          <TextField  name="format" helperText="Please select a format" select fullWidth>
             <MenuItem value="image">Image</MenuItem>
             <MenuItem value="audio">Audio</MenuItem>
             <MenuItem value="video">Video</MenuItem>
@@ -500,9 +473,8 @@ class CreateSurvey extends Component {
       case "Number":
         return(
           <>
-          <TextField variant="outlined" placeholder="Lower Limit" name="lower_limit"></TextField><br/>
-          <TextField variant="outlined" placeholder="Upper Limit"name="upper_limit"></TextField><br/>
-          <TextField variant="outlined" placeholder="Others" name="others"></TextField>
+          <TextField variant="outlined" placeholder="Lower Limit" fullWidth name="lower_limit"></TextField><br/>
+          <TextField variant="outlined" placeholder="Upper Limit" fullWidth name="upper_limit"></TextField><br/>
           </>
 
         );
@@ -510,11 +482,45 @@ class CreateSurvey extends Component {
       case "Location":
         return(
           <>
-          <TextField variant="outlined" placeholder="Reference Title" name="ref_title"></TextField><br/>
-          <TextField variant="outlined" placeholder="Location Settings"name="settings"></TextField><br/>
-          <TextField variant="outlined" placeholder="Others" name="others"></TextField>
+          <TextField variant="outlined" placeholder="Location Settings" fullWidth name="settings"></TextField><br/>
           </>
-        )  
+        );
+        
+      case "Likart_Scale":
+        return(
+          <>
+          <TextField variant="outlined" placeholder="Option 1" fullWidth name="option1"></TextField><br/>
+          <TextField variant="outlined" placeholder="Option 2" fullWidth name="option2"></TextField><br/>
+          <TextField variant="outlined" placeholder="Option 3" fullWidth name="option3"></TextField><br/>
+          </>
+        );
+      case "Scale":
+        return(
+          <>
+          <TextField variant="outlined" placeholder="Minimum Value" fullWidth name="min_value"></TextField><br/>
+          <TextField variant="outlined" placeholder="Maximum Value" fullWidth name="max_value"></TextField><br/>
+          <TextField variant="outlined" placeholder="Step Size" fullWidth name="step_size"></TextField>
+          </>
+        )
+      case "Date_Time":
+        return(
+          <>
+          <label>Please select the format</label>
+          <TextField variant="outlined" fullWidth select name="format" ><br/>
+          <MenuItem value="yyyy MM dd">yyyy MM dd</MenuItem>
+          <MenuItem value="MM dd yyyy">MM dd yyyy</MenuItem>
+          <MenuItem value="M dd yyyy">M dd yyyy</MenuItem>
+          <MenuItem value="yyyy MM dd HH:mm:ss Z">yyyy MM dd HH:mm:ss Z</MenuItem>
+          <MenuItem value="yyyy MM dd HH:mm	">yyyy MM dd HH:mm</MenuItem>
+          </TextField><br/>
+          <label>Please select type</label>
+          <TextField variant="outlined" fullWidth select name="type"><br/>
+          <MenuItem value="DATE">Date</MenuItem>
+          <MenuItem value="DATE-TIME">Date-Time</MenuItem>
+          <MenuItem value="TIME">Time</MenuItem>
+          </TextField>
+          </>
+        )      
       default:
         return null;
     }

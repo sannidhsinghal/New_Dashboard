@@ -464,7 +464,7 @@ class AddQuestion extends Component {
       description: this.state.description,
       isMandatory: this.state.isMandatory,
       itemTypeId: itemTypeId,
-      surveyId: 81,
+      surveyId: this.props.surveyId,
       item: JSON.stringify(item)
     };
     dataPost("/question/addQuestionToSurvey", question).then(response => {

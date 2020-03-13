@@ -279,9 +279,13 @@ class CreateSurvey extends Component {
         );
 
       case 1:
+     if(this.state.data.length!==0){
         return(
-          <AddQuestion/>
+          <AddQuestion
+          surveyId={this.state.data.id}
+          />
         )
+     }
       //   <div>
       //   <center>
       //  <p> Please upload the excel containing the questions</p>
@@ -297,16 +301,17 @@ class CreateSurvey extends Component {
       //   </div>
       // )}
 
-      // else{
-      //   return(
-      //   <div
-      //   style={{ position: "fixed", top: "50%", left: "50%" }}
-      //   className="d-flex flex-column align-items-center justify-content-center"
-      // >
-      //   <Spinner animation="grow" variant="warning">
-      //     <span className="sr-only">Loading...</span>
-      //   </Spinner>
-      // </div>
+      else{
+        return(
+        <div
+        style={{ position: "fixed", top: "50%", left: "50%" }}
+        className="d-flex flex-column align-items-center justify-content-center"
+      >
+        <Spinner animation="grow" variant="warning">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>)
+      }
 
       case 2:
         return (

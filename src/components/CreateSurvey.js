@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { Stepper, Step, StepLabel, MenuItem } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
-import { Card, Button, Modal } from "react-bootstrap";
+import { Card, Button} from "react-bootstrap";
 import { dataPost, dataGet } from "./GetData";
 import Switch from "react-switch";
 import { uploadFile, uploadImage } from "./FileUpload";
 import { Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PreviewSurvey from "../componentss/Preview/PreviewSurvey";
+import AddQuestion from "./AddQuestion";
 
 class CreateSurvey extends Component {
   constructor() {
@@ -22,7 +23,7 @@ class CreateSurvey extends Component {
       name: "",
       singleResponseUser: false,
       approvalRequired: false,
-      activeStep: 1,
+      activeStep: 0,
       data: [],
       categories: [],
       imagePath: "",
@@ -30,7 +31,7 @@ class CreateSurvey extends Component {
       surveyId: "",
       itemType: "",
       setShow: false,
-      isMandatory:false
+      isMandatory: false,
     };
     this.handleNext = this.handleNext.bind(this);
     this.handleBack = this.handleBack.bind(this);
@@ -41,9 +42,6 @@ class CreateSurvey extends Component {
     this.handleApproval = this.handleApproval.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.setImage = this.setImage.bind(this);
-    this.handleModal = this.handleModal.bind(this);
-    this.getQuestionFields = this.getQuestionFields.bind(this);
-    this.handleMandatory = this.handleMandatory.bind(this);
   }
 
   componentDidMount() {
@@ -88,9 +86,7 @@ class CreateSurvey extends Component {
     this.setState({ approvalRequired });
   }
 
-  handleMandatory(isMandatory){
-    this.setState({isMandatory});
-  }
+ 
   handleSubmit = event => {
     event.preventDefault();
     this.handleNext(this.state.activeStep);
@@ -283,70 +279,9 @@ class CreateSurvey extends Component {
         );
 
       case 1:
-        console.log(this.state.data);
-        const questionTypes=["MCQ","SCQ","Text","Number","Date_Time","Location","Email","Bar_Code","File_Upload","Likart_Scale","Scale","Rating","Media"]
-        // if(this.state.data.length!==0){
-        return (
-          <div>
-            <center>
-              <Button onClick={this.handleModal}>
-                Add Question
-                </Button>
-                <Modal show={this.state.setShow}
-                onHide={this.handleModal}
-                >
-                  <Modal.Header closeButton>
-                    <Modal.Title>Add Question</Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                    <TextField
-                      variant="outlined"
-                      placeholder="Title"
-                      fullWidth
-                    ></TextField>
-                    <br />
-                    <TextField
-                      variant="outlined"
-                      placeholder="Description"
-                      fullWidth
-                    ></TextField>
-                    <br />
-                    <label><b>Should the question be mandatory</b></label>
-                    <Switch
-                  name="isMandatory"
-                  onChange={this.handleMandatory}
-                  checked={this.state.isMandatory}
-                  onColor="#bf8300"
-                  onHandleColor="#ffff"
-                  handleDiameter={20}
-                  uncheckedIcon={false}
-                  checkedIcon={false}
-                  boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-                  activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
-                  height={15}
-                  width={45}
-                /><br/>
-                    <TextField variant="outlined" fullWidth placeholder="Reference Title" name="ref_title"></TextField><br/>
-                    <TextField variant="outlined" fullWidth placeholder="Others" name="others"></TextField><br/>
-                   <label><b>Please select the question type</b></label>
-                    <TextField variant="outlined" fullWidth select name="itemType" onChange={this.handleChange} value={this.state.itemType}>
-                      {questionTypes.map(questionType=>(
-                        <MenuItem key={questionType} value={questionType}>
-                          {questionType}
-                        </MenuItem>
-                      )
-                      )}
-                    </TextField><br/>
-
-                    {this.getQuestionFields(this.state.itemType)}
-                  </Modal.Body>
-                  <Modal.Footer>
-                    <Button variant="primary">Add</Button>
-                  </Modal.Footer>
-                </Modal>
-            </center>
-          </div>
-        );
+        return(
+          <AddQuestion/>
+        )
       //   <div>
       //   <center>
       //  <p> Please upload the excel containing the questions</p>
@@ -397,137 +332,9 @@ class CreateSurvey extends Component {
     }
   }
 
-  getQuestionFields(params) {
-    switch (params) {
-      case "MCQ":
-        return (
-          <>
-            <TextField variant="outlined" placeholder="option 1" fullWidth name="option1"></TextField>
-            <br />
-            <TextField variant="outlined" placeholder="option 2" fullWidth name="option2"></TextField>
-            <br />
-            <TextField variant="outlined" placeholder="option 3" fullWidth name="option3"></TextField>
-            <br />
-            <TextField variant="outlined" placeholder="option 4" fullWidth name="option4"></TextField>
-            <br />
-            <TextField variant="outlined" placeholder="option 5" fullWidth name="option5"></TextField>
-            <br />
-          </>
-        );
-      case "Text":
-        return (
-          <>
-          </>
-        );
-      case "SCQ":
-        return (
-          <>
-            <TextField variant="outlined" placeholder="option 1" fullWidth name="option1"></TextField>
-            <br />
-            <TextField variant="outlined" placeholder="option 2" fullWidth name="option2"></TextField>
-            <br />
-            <TextField variant="outlined" placeholder="option 3" fullWidth name="option3"></TextField>
-            <br />
-            <TextField variant="outlined" placeholder="option 4" fullWidth name="option4"></TextField>
-            <br />
-            <TextField variant="outlined" placeholder="option 5" fullWidth name="option5"></TextField>
-            <br />
-          </>
-        );
-      case "Bar_Code":
-        return (
-          <>
-          </>
-        );
-      case "Signature":
-        return (
-          <>
-          </>
-        );
-      case "Email":
-        return (
-          <>
-          </>
-        );
-      case "File_Upload":
-        return (
-          <>
-          </>
-        );
-      case "Rating":
-        return (
-          <>
-          </>
-        );
-
-      case "Media":
-        return(
-          <>
-          <TextField  name="format" helperText="Please select a format" select fullWidth>
-            <MenuItem value="image">Image</MenuItem>
-            <MenuItem value="audio">Audio</MenuItem>
-            <MenuItem value="video">Video</MenuItem>
-          </TextField>
-          </>
-        )
-      case "Number":
-        return(
-          <>
-          <TextField variant="outlined" placeholder="Lower Limit" fullWidth name="lower_limit"></TextField><br/>
-          <TextField variant="outlined" placeholder="Upper Limit" fullWidth name="upper_limit"></TextField><br/>
-          </>
-
-        );
-      
-      case "Location":
-        return(
-          <>
-          <TextField variant="outlined" placeholder="Location Settings" fullWidth name="settings"></TextField><br/>
-          </>
-        );
-        
-      case "Likart_Scale":
-        return(
-          <>
-          <TextField variant="outlined" placeholder="Option 1" fullWidth name="option1"></TextField><br/>
-          <TextField variant="outlined" placeholder="Option 2" fullWidth name="option2"></TextField><br/>
-          <TextField variant="outlined" placeholder="Option 3" fullWidth name="option3"></TextField><br/>
-          </>
-        );
-      case "Scale":
-        return(
-          <>
-          <TextField variant="outlined" placeholder="Minimum Value" fullWidth name="min_value"></TextField><br/>
-          <TextField variant="outlined" placeholder="Maximum Value" fullWidth name="max_value"></TextField><br/>
-          <TextField variant="outlined" placeholder="Step Size" fullWidth name="step_size"></TextField>
-          </>
-        )
-      case "Date_Time":
-        return(
-          <>
-          <label>Please select the format</label>
-          <TextField variant="outlined" fullWidth select name="format" ><br/>
-          <MenuItem value="yyyy MM dd">yyyy MM dd</MenuItem>
-          <MenuItem value="MM dd yyyy">MM dd yyyy</MenuItem>
-          <MenuItem value="M dd yyyy">M dd yyyy</MenuItem>
-          <MenuItem value="yyyy MM dd HH:mm:ss Z">yyyy MM dd HH:mm:ss Z</MenuItem>
-          <MenuItem value="yyyy MM dd HH:mm	">yyyy MM dd HH:mm</MenuItem>
-          </TextField><br/>
-          <label>Please select type</label>
-          <TextField variant="outlined" fullWidth select name="type"><br/>
-          <MenuItem value="DATE">Date</MenuItem>
-          <MenuItem value="DATE-TIME">Date-Time</MenuItem>
-          <MenuItem value="TIME">Time</MenuItem>
-          </TextField>
-          </>
-        )      
-      default:
-        return null;
-    }
-  }
 
   render() {
-    var steps = ["Enter Basic Details", "Add Questions", "Preview", "Publish"];
+    var steps = ["Enter Basic Details", "Add Questions", "Preview","Publish"];
 
     return (
       <div className="content">

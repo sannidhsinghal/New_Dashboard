@@ -3,34 +3,127 @@ import InText from './InText.js'
 import InMCQ from './InMCQ.js'
 import InMedia from './InMedia'
 import {dataGet} from '../../components/GetData.js'
+import {TextField,Card} from '@material-ui/core'
 
 
 class PreviewSurvey extends Component{
     constructor(props){
         super();
         this.state={
-            obj: [],
+         data:[]
         }
+        this.setPreview=this.setPreview.bind(this)
         }
     
 componentDidMount(){
-     console.log("Component called")
-        dataGet("/survey/getquestions?surveyId="+this.props.id)
+        dataGet("/survey/getquestions?surveyId=1")
             .then(result=>{
            this.setState({
-               obj:result 
+               data:result 
            })
            console.log(this.state.obj)           
         })
     }
+
+
+  setPreview(params){
+      console.log(params)
+      switch(params.itemType){
+
+        case "Text":
+            console.log("component called")
+            return(
+                <>
+                <b>Q.{params.title}</b><br/>
+                <TextField fullWidth disabled></TextField>
+               </>
+            );
+        
+        case "Media":
+            return(
+                <>
+                <b>Q.{params.title}</b>
+                <input type ="file" fullWidth></input>
+                </>
+            );
+        
+        case "MCQ":
+            return(
+                <>
+                <b>Q.{params.title}</b>
+                <input type ="checkbox">{params.option1}</input>
+                <input type ="checkbox">{params.option2}</input>
+                <input type ="checkbox">{params.option3}</input>
+                <input type ="checkbox">{params.option4}</input>
+                <input type ="checkbox">{params.option5}</input>
+                </>
+            )    
+
+            case "SCQ":
+                return(
+                    <>
+                    <b>Q.{params.title}</b>
+                    <input type="radio" >{params.option1}</input>
+                    <input type="radio" >{params.option2}</input>
+                    <input type="radio" >{params.option3}</input>
+                    <input type="radio" >{params.option4}</input>
+                    <input type="radio" >{params.option5}</input>
+                    </>
+                )
+        case "Bar_Code":
+            return(
+                <>
+                <b>Q.{params.title}</b>
+                <img src ="https://surveyglance.s3.us-east-2.amazonaws.com/bar code_20200315113834.jpg"
+                height="300"
+                ></img><br/>
+                </>
+            )
+        case "Rating":
+            return(
+                <>
+                </>
+            );                 
+
+        case "File_Upload":
+            return(
+                <>
+                <b>Q.{params.title}</b>
+                <input type ="file" fullWidth></input>
+                </>
+            ); 
+        
+        case "Signature":
+            return(
+                <>
+                <b>Q.{params.title}</b><br/>
+                <TextField fullWidth disabled multiline rows="5"></TextField>
+                </>
+            );
+            
+        case "Email":
+            return(
+                <>
+                <b>Q.{params.title}</b><br/>
+                <TextField fullWidth disabled></TextField>
+                </>
+            );
+        
+        case "Number":
+            return(
+                <>
+                <b>Q.{params.title}</b><br/>
+                <input type ="number" fullWidth disabled></input>
+                </>
+            )    
+
+
+      }
+  }  
         
 render(){
     return(
-        <div className="content">
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-12" >
-            <div className="card">
+    <>
               <div className="card-header card-header-primary">
         <div style={{marginTop:"5px" }}>
            <h1 className="card-title" style={{textAlign:"center"}}>{this.props.Title}</h1> 
@@ -38,69 +131,21 @@ render(){
             </div>
             <div className="card-body">
              <div className="row">
-              <div className="col-md-12">
-            {this.state.obj.map(res=>{
-                
+            {this.state.data.map(res=>{  
                 var queItem = JSON.parse(res.item)
-                
-                if (queItem.itemType === "Text") {
-                    return ( 
-            <div style={{paddingBottom:"5px", fontSize:"16px"}}>
-            <InText
-             title={queItem.title}
-            itemType = {queItem.itemType}
-            placeholder={queItem.placeholder}
-            required={queItem.required}
-            key={queItem.placeholder}
-            handleChange={this.handleChange}
-            />
-            </div>
-        )
-    }
-    
-
-    if (queItem.itemType === "checkbox"){
-        return (
-            <InMCQ 
-            title={queItem.title}
-            itemType={queItem.itemType}
-            placeholder={queItem.placeholder}
-            required={queItem.required}
-            key={queItem.placeholder}
-            handleChange={this.handleChange}
-            />
-        )
-    } 
-
-    if (queItem.itemType === "Media"){
-        return (
-            <div style={{paddingBottom:"5px", fontSize:"16px"}}>
-
-            <InMedia 
-            title={queItem.title}
-            itemType={queItem.itemType}
-            placeholder={queItem.placeholder}
-            required={queItem.required}
-            key={queItem.placeholder}
-            handleChange={this.handleChange}
-            />
-            </div>
-        )
-    }     
-        
-    })}
+                return(
+                <>    
+                {this.setPreview(queItem)}
+                <br/>
+                </>
+                )
+            }
+    )}
         
     {/* <button style={{display:"flex", margin:"auto"}} type="submit"> Next</button> */}
     </div>
     </div>
-   
-    </div>
-        </div>
-        </div>
-        </div>
-        </div>
-         </div>
-    
+    </>
     )
 }}
 

@@ -23,7 +23,7 @@ class CreateSurvey extends Component {
       name: "",
       singleResponseUser: false,
       approvalRequired: false,
-      activeStep: 0,
+      activeStep: 2,
       data: [],
       categories: [],
       imagePath: "",

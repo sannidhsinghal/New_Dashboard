@@ -163,7 +163,7 @@ class Page extends React.Component {
             <form onSubmit={this.handleApi} action="#">
               <h1>Sign in !</h1>
 
-              <input type="username" placeholder="username" name="username" onChange={this.handleChange}/>
+              <input type="username" placeholder="Username" name="username" onChange={this.handleChange}/>
               <input type="password" placeholder="Password" name="password" onChange={this.handleChange} />
               <a href="#">Forgot your password?</a>
               <button onClick={this.handleApi}>Sign In</button>

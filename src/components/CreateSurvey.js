@@ -23,7 +23,7 @@ class CreateSurvey extends Component {
       name: "",
       singleResponseUser: false,
       approvalRequired: false,
-      activeStep: 2,
+      activeStep: 0,
       data: [],
       categories: [],
       imagePath: "",
@@ -281,9 +281,22 @@ class CreateSurvey extends Component {
       case 1:
      if(this.state.data.length!==0){
         return(
+          <>
           <AddQuestion
           surveyId={this.state.data.id}
           />
+          <center>
+        <p> Please upload the excel containing the questions</p>
+           <div style={{marginTop:"200px"}}>
+           <TextField type="file" onChange={this.handleFile}/>
+          <Button variant="login_btn" onClick={() =>uploadFile(this.state.file,this.state.data.id,this.state.data.createdById)}>Upload</Button>
+           <Button variant="login_btn" onClick={this.handleBack}>Back</Button>
+          <Button variant="login_btn" onClick={this.handleNext}>
+            Next
+          </Button>
+           </div>
+           </center>
+           </>
         )
      }
       //   <div>

@@ -1,7 +1,9 @@
 import React,{Component} from 'react'
 import {dataGet} from '../../components/GetData.js'
-import {TextField,Card} from '@material-ui/core'
+import {TextField} from '@material-ui/core'
 import Rating from "react-rating";
+import Calendar from 'react-calendar';
+
 
 
 
@@ -15,7 +17,7 @@ class PreviewSurvey extends Component{
         }
     
 componentDidMount(){
-        dataGet("/survey/getquestions?surveyId="+this.props.surveyId)
+        dataGet("/survey/getquestions?surveyId="+this.props.id)
             .then(result=>{
            this.setState({
                data:result 
@@ -120,9 +122,21 @@ componentDidMount(){
                 <b>Q.{params.title}</b><br/>
                 <input type ="number" fullWidth disabled></input>
                 </>
-            )    
-
-
+            )
+        case "Scale":
+            return(
+                <>
+                <b>Q.{params.title}</b><br/>
+                <input type ="range" max={params.max_value} min={params.min_value} step={params.step_size}/>
+                </>
+            )
+        case "Date_Time":
+            return(
+                <>
+                <b>Q.{params.title}</b>
+                <Calendar/>
+                </>
+            )            
       }
   }  
         

@@ -316,7 +316,7 @@ class CreateSurvey extends Component {
       case 2:
         return (
           <div>
-            <PreviewSurvey id={this.state.surveyId} Title={this.state.Name} />
+            <PreviewSurvey id={this.state.surveyId} Title={this.state.data.name} />
             <Button onClick={this.handleNext}>Next</Button>
             <Button onClick={this.handleBack}>Back</Button>
           </div>

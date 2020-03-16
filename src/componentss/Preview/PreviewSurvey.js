@@ -1,9 +1,8 @@
 import React,{Component} from 'react'
-import InText from './InText.js'
-import InMCQ from './InMCQ.js'
-import InMedia from './InMedia'
 import {dataGet} from '../../components/GetData.js'
 import {TextField,Card} from '@material-ui/core'
+import Rating from "react-rating";
+
 
 
 class PreviewSurvey extends Component{
@@ -16,7 +15,7 @@ class PreviewSurvey extends Component{
         }
     
 componentDidMount(){
-        dataGet("/survey/getquestions?surveyId=1")
+        dataGet("/survey/getquestions?surveyId="+this.props.surveyId)
             .then(result=>{
            this.setState({
                data:result 
@@ -82,6 +81,12 @@ componentDidMount(){
         case "Rating":
             return(
                 <>
+                <b>Q.{params.title}</b>
+                <Rating
+                emptySymbol="fa fa-star-o fa-2x"
+                initalRating="0"
+                readonly
+              />
                 </>
             );                 
 

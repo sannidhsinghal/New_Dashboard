@@ -1,50 +1,44 @@
-import React,{Component} from 'react';
-import MonthChart from './MonthChart';
-import StatusChart from './StatusChart.js';
-import { dataGet } from '../../components/GetData.js';
+import React, { Component } from "react";
+import MonthChart from "./MonthChart";
+import StatusChart from "./StatusChart.js";
+import { dataGet } from "../../components/GetData.js";
 
-
-
-class  Dashboard extends Component {
-
-  constructor(){
+class Dashboard extends Component {
+  constructor() {
     super();
-    this.state={
-      data:[]
-    }
+    this.state = {
+      data: []
+    };
   }
 
-  componentDidMount(){
-    dataGet('/report/count?format=date&userId='+localStorage.getItem('userId'))
-    .then(response=>{
-      this.setState({
-        data:response
-      },
-      console.log(this.state.data)
-      )
-    })
+  componentDidMount() {
+    dataGet(
+      "/report/count?format=date&userId=" + localStorage.getItem("userId")
+    ).then(response => {
+      this.setState(
+        {
+          data: response
+        },
+        console.log(this.state.data)
+      );
+    });
   }
-  
-  
-  render(){
+
+  render() {
     return (
-    <div className="content">
+      <div className="content">
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-3 col-md-6 col-sm-6">
               <div className="card card-stats">
                 <div className="card-header card-header-warning card-header-icon">
                   <div className="card-icon">
-                  <i class="material-icons">
-                            check_circle
-                  </i>
+                    <i class="material-icons">check_circle</i>
                   </div>
                   <p className="card-category">Live Surveys</p>
-                  <h3 className="card-title">{this.state.data.liveCount}
-                  </h3>
+                  <h3 className="card-title">{this.state.data.liveCount}</h3>
                 </div>
-                <div className="card-footer">
-                </div>
+                <div className="card-footer"></div>
               </div>
             </div>
             <div className="col-lg-3 col-md-6 col-sm-6">
@@ -56,8 +50,7 @@ class  Dashboard extends Component {
                   <p className="card-category">Draft Surveys</p>
                   <h3 className="card-title">{this.state.data.draftCount}</h3>
                 </div>
-                <div className="card-footer">
-                </div>
+                <div className="card-footer"></div>
               </div>
             </div>
             <div className="col-lg-3 col-md-6 col-sm-6">
@@ -67,10 +60,11 @@ class  Dashboard extends Component {
                     <i className="material-icons">info_outline</i>
                   </div>
                   <p className="card-category">Responses Captured</p>
-                  <h3 className="card-title">{this.state.data.responseCount}</h3>
+                  <h3 className="card-title">
+                    {this.state.data.responseCount}
+                  </h3>
                 </div>
-                <div className="card-footer">
-                </div>
+                <div className="card-footer"></div>
               </div>
             </div>
             <div className="col-lg-3 col-md-6 col-sm-6">
@@ -80,29 +74,25 @@ class  Dashboard extends Component {
                     <i className="fa fa-twitter" />
                   </div>
                   <p className="card-category">Total Surveys</p>
-                  <h3 className="card-title">{this.state.data.liveCount+this.state.data.draftCount}</h3>
+                  <h3 className="card-title">
+                    {this.state.data.liveCount + this.state.data.draftCount}
+                  </h3>
                 </div>
-                <div className="card-footer">
-                </div>
+                <div className="card-footer"></div>
               </div>
             </div>
           </div>
-          <div className="row"  >
-            <div className="col-md-5" style={{marginRight:"5%",marginLeft:"6%"}} >
-              
-                
-                 
-                  <MonthChart/>
-           
-                
+          <div className="row">
+            <div
+              className="col-md-5"
+              style={{ marginRight: "5%", marginLeft: "6%" }}
+            >
+              <MonthChart />
             </div>
-            
-            <div className="col-md-5"style={{marginRight:"5%"}}>
-              
-                  <StatusChart/>
+            <div className="col-md-5" style={{ marginRight: "5%" }}>
+              <StatusChart />
             </div>
-                
-             {/* <div className="col-md-6">
+            {/* <div className="col-md-6">
               <div className="card card-chart">
                 <div className="card-header card-header-danger">
                   <div className="ct-chart" id="completedTasksChart" />
@@ -118,11 +108,10 @@ class  Dashboard extends Component {
                 </div>
               </div>
             </div> */}
-
           </div>
         </div>
       </div>
-  );
+    );
   }
 }
 

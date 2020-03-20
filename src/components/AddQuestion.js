@@ -504,6 +504,7 @@ class AddQuestion extends Component {
                 name="title"
                 fullWidth
                 onChange={this.handleChange}
+                style={{marginBottom:"10px"}}
               ></TextField>
               <br />
               <TextField
@@ -512,16 +513,17 @@ class AddQuestion extends Component {
                 fullWidth
                 name="description"
                 onChange={this.handleChange}
+                style={{marginBottom:"10px"}}
               ></TextField>
               <br />
-              <label>
+              <label style={{marginBottom:"10px"}}>
                 <b>Should the question be mandatory</b>
               </label>
               <Switch
                 name="isMandatory"
                 onChange={this.handleMandatory}
                 checked={this.state.isMandatory}
-                onColor="#bf8300"
+                onColor="#9124a3"
                 onHandleColor="#ffff"
                 handleDiameter={20}
                 uncheckedIcon={false}
@@ -530,6 +532,7 @@ class AddQuestion extends Component {
                 activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
                 height={15}
                 width={45}
+                style={{marginBottom:"10px"}}
               />
               <br />
               <TextField
@@ -538,6 +541,7 @@ class AddQuestion extends Component {
                 placeholder="Reference Title"
                 name="ref_title"
                 onChange={this.handleChange}
+                style={{marginBottom:"10px"}}
               ></TextField>
               <br />
               <TextField
@@ -546,9 +550,10 @@ class AddQuestion extends Component {
                 placeholder="Others"
                 name="others"
                 onChange={this.handleChange}
+                style={{marginBottom:"10px"}}
               ></TextField>
               <br />
-              <label>
+              <label style={{marginBottom:"10px"}}>
                 <b>Please select the question type</b>
               </label>
               <TextField
@@ -558,11 +563,14 @@ class AddQuestion extends Component {
                 name="itemType"
                 onChange={this.handleChange}
                 value={this.state.itemType}
+                style={{marginBottom:"10px"}}
               >
                 {questionTypes.map(questionType => (
                   <MenuItem key={questionType} value={questionType}>
                     {questionType}
+                    <hr/>
                   </MenuItem>
+               
                 ))}
               </TextField>
               <br />

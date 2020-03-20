@@ -286,14 +286,24 @@ class CreateSurvey extends Component {
           surveyId={this.state.data.id}
           />
           <center>
-        <p> Please upload the excel containing the questions</p>
-           <div style={{marginTop:"200px"}}>
+           <p>Please upload the excel containing the questions</p>
+           <div  style={{marginTop:"200px"}}>
+           <div className="row" >
+           <div className="col-md-6 mx-md-auto">
            <TextField type="file" onChange={this.handleFile}/>
-          <Button variant="login_btn" onClick={() =>uploadFile(this.state.file,this.state.data.id,this.state.data.createdById)}>Upload</Button>
-           <Button variant="login_btn" onClick={this.handleBack}>Back</Button>
-          <Button variant="login_btn" onClick={this.handleNext}>
+          
+          <Button variant="login_btn" onClick={() =>uploadFile(this.state.file,this.state.data.id,this.state.data.createdById)} style={{marginLeft:"10px",backgroundColor:"#9124a3"}}>Upload</Button>
+          </div>
+          </div>
+          <div className="row ">
+          <div className="col-md-6 mx-md-auto">
+           <Button variant="login_btn" onClick={this.handleBack} style={{marginRight:"15px",backgroundColor:"#9124a3"}}>Back</Button>
+          
+          <Button variant="login_btn" onClick={this.handleNext} style={{backgroundColor:"#9124a3"}}>
             Next
           </Button>
+          </div>
+          </div>
            </div>
            </center>
            </>

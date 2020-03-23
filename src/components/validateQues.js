@@ -14,7 +14,7 @@ class valQues extends Component {
     }
 
     ComponentDidMount(
-        dataGet("getAllQuestions");
+        dataGet("getAllQuestions")
         .then(response{
             this.setState({
                 response:res

@@ -83,10 +83,10 @@ class Page extends React.Component {
 
   render() {
     let alertBox=""
-    // console.log('jf')
+    console.log('jf')
     if(this.state.isLogged){
       return(
-        <Redirect to ={{pathname:'/home',state:{
+        <Redirect to ={{pathname:'/dashboard',state:{
           userId:this.state.userId
         }}}></Redirect>
       )

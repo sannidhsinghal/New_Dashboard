@@ -205,22 +205,33 @@ class CreateSurvey extends Component {
                   name="description"
                   onChange={this.handleChange}
                 />
+                <div >
+                <div className="row my-2" >
+
+             
                 <label>Upload banner for the survey(optional)</label>
+              
+                </div>
+                <div className="row my-2">
+
+               
                 <TextField
                   variant="outlined"
                   type="file"
                   onChange={this.handleFile}
                 />
-                <Button variant="login_btn" onClick={this.setImage}>
+                <Button variant="login_btn" onClick={this.setImage} style={{backgroundColor:"#9124a3"}}>
                   Upload
                 </Button>
-                <br />
+                </div>
+                 <div className="row my-2">
                 <label>Should one user fill the survey once only</label>
+                
                 <Switch
                   name="singleResponseUser"
                   onChange={this.handleResponse}
                   checked={this.state.singleResponseUser}
-                  onColor="#bf8300"
+                  onColor="#9124a3"
                   onHandleColor="#ffff"
                   handleDiameter={20}
                   uncheckedIcon={false}
@@ -230,13 +241,14 @@ class CreateSurvey extends Component {
                   height={15}
                   width={45}
                 />
-                <br />
+                 </div>
+                 <div className="row my-2">
                 <span>Do you want to capture the IP address</span>
                 <Switch
                   name="isIpAllowed"
                   onChange={this.handleIp}
                   checked={this.state.isIpAllowed}
-                  onColor="#bf8300"
+                  onColor="#9124a3"
                   onHandleColor="#ffff"
                   handleDiameter={20}
                   uncheckedIcon={false}
@@ -246,15 +258,18 @@ class CreateSurvey extends Component {
                   height={15}
                   width={45}
                 />
-                <br />
+                </div>
+                
+                <div className="row my-2" >
                 <span>
                   Do you want to approve the user for filling the survey
                 </span>
+                
                 <Switch
                   name="approvalRequired"
                   onChange={this.handleApproval}
                   checked={this.state.approvalRequired}
-                  onColor="#bf8300"
+                  onColor="#9124a3"
                   onHandleColor="#ffff"
                   handleDiameter={20}
                   uncheckedIcon={false}
@@ -264,15 +279,19 @@ class CreateSurvey extends Component {
                   height={15}
                   width={45}
                 />
-                <br />
+                </div>
+                <div className="row my-2 " style={{marginLeft:"110%"}}>
                 <Button
                   variant="login_btn"
                   align="right"
                   type="submit"
                   onClick={this.handleSubmit}
+                  style={{backgroundColor:"#9124a3"}}
                 >
                   Submit
                 </Button>
+                </div>
+                </div>
               </div>
             </div>
           </div>

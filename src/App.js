@@ -8,14 +8,38 @@ import Dashboard from './componentss/dashboard/Dashboard.js';
 import User from './componentss/dashboard/User.js';
 import {Nav} from 'react-bootstrap';
 import ResponseDetails from './components/ResponseDetails.js';
-import PreviewSurvey from './componentss/Preview/PreviewSurvey.js'
+import PreviewSurvey from './componentss/Preview/PreviewSurvey.js';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css'; 
+import { Redirect} from "react-router-dom";
+import NotFoundPage from './componentss/404Page';
+import { Link } from 'react-router-dom';
+
 
 
 import ResponseTable from "./components/ResponseTable";
 
 
 class App extends React.Component {
-  render() {
+ 
+    submit = () => {
+      confirmAlert({
+        title: 'Confirm to logout',
+        message: 'Are you sure to logout?',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: () => alert('logout please' )
+        },
+          {
+            label: 'No'
+          }
+        ]
+      });
+     
+    };
+
+render(){
     var navBar;
     if (localStorage.getItem("userId")) {
       navBar = (
@@ -50,11 +74,12 @@ class App extends React.Component {
                   <p>Forms</p>
                 </Nav.Link>
               </li>
-              <li className="nav-item " onClick={()=>localStorage.clear()}>
-                <Nav.Link className="nav-link" href="/login">
+             
+              <li className="nav-item " onClick={this.submit}>
+              
                   <i className="material-icons">power_settings_new</i>
                   <p>Logout</p>
-                </Nav.Link>
+                
               </li>
             </ul>
           </div>
@@ -78,6 +103,8 @@ class App extends React.Component {
             <Route exact path="/response" component={ResponseTable}/>
            <Route exact path="/responseDetails" component={ResponseDetails}/>
            <Route exact path="/preview" component={PreviewSurvey}/>
+           <Route path="*" component={NotFoundPage} />
+            
           </div>
         </Router>
       </Fragment>

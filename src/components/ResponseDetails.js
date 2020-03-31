@@ -3,6 +3,7 @@ import { dataGet } from "./GetData";
 import Card from "react-bootstrap/Card";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import Rating from "react-rating";
+import MDSpinner from "react-md-spinner";
 
 class ResponseDetails extends Component {
   constructor() {
@@ -96,6 +97,9 @@ class ResponseDetails extends Component {
   }
 
   render() {
+    if (!this.state.response.length) {
+      return <MDSpinner style={{marginTop:"120px", marginLeft: "420px" }}/>}
+
     return (
       <div className="content">
         <div className="container-fluid">
@@ -126,7 +130,7 @@ class ResponseDetails extends Component {
                               </b>
                             </h5>
                             <br />
-                            {this.renderSwitch(res)}
+                             {this.renderSwitch(res)}
                           </li>
                         );
                       })}

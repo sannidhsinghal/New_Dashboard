@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import MUIDataTable from "mui-datatables";
 import { dataGet } from "./GetData";
 import { Redirect } from "react-router-dom";
+import MDSpinner from "react-md-spinner";
 
 export class ResponseTable extends Component {
   constructor() {
@@ -55,6 +56,9 @@ export class ResponseTable extends Component {
   }
 
   render() {
+    if(!this.state.responses.length){
+      return <MDSpinner style={{marginTop:"120px", marginLeft: "420px" }}/>}
+
     if (this.state.toDetail) {
       return (
         <Redirect
